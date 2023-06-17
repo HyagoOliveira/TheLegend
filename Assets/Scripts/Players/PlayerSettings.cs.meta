@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 29dc48a2a25f81a4f8d0b6896ade3983
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - <Ultrahand>k__BackingField: {fileID: 11400000, guid: 584bdad6e3ed3504fabdc5d7885af135, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0c9522d9b43062f4d8b77876befabb3f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - caster: {instanceID: 0}
+  - audioSource: {instanceID: 0}
+  - detector: {instanceID: 0}
+  - playerSettings: {fileID: 11400000, guid: 839370ace11398d4e999d7aca6bf7122, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

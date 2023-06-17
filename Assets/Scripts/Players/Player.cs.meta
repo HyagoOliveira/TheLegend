@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: ef42cbd75f12f234e8119ed81e07ee5f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - <Settings>k__BackingField: {fileID: 11400000, guid: 839370ace11398d4e999d7aca6bf7122, type: 2}
+  - <Motor>k__BackingField: {instanceID: 0}
+  - <Animator>k__BackingField: {instanceID: 0}
+  - <CameraPivot>k__BackingField: {instanceID: 0}
+  - <Ultrahand>k__BackingField: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

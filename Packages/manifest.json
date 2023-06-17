@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "com.actioncode.input-system": "1.0.0-preview.6",
+    "com.actioncode.physics": "0.2.0",
+    "com.actioncode.visual-effects": "1.0.0",
+    "com.unity.cinemachine": "2.9.7",
+    "com.unity.ide.visualstudio": "2.0.18",
+    "com.unity.inputsystem": "1.6.1",
+    "com.unity.render-pipelines.universal": "14.0.8",
+    "com.unity.textmeshpro": "3.0.6",
+    "com.unity.ugui": "1.0.0",
+    "com.unity.modules.animation": "1.0.0",
+    "com.unity.modules.audio": "1.0.0",
+    "com.unity.modules.particlesystem": "1.0.0",
+    "com.unity.modules.physics": "1.0.0",
+    "com.unity.modules.screencapture": "1.0.0",
+    "com.unity.modules.ui": "1.0.0",
+    "com.unity.modules.uielements": "1.0.0"
+  },
+  "scopedRegistries": [
+    {
+      "name": "Action Code",
+      "url": "http://34.151.243.47:4873/",
+      "scopes": [
+        "com.actioncode"
+      ]
+    }
+  ]
+}
