@@ -8,11 +8,15 @@ namespace TheLegend.Abilities
     {
         [field: SerializeField] public PlayerSettings PlayerSettings { get; private set; }
 
+        public Player Player => PlayerSettings.Player;
+
         public event Action<bool> OnToggled;
 
-        internal void Initialize() { }
-        internal void Toggle(bool enabled) => OnToggled?.Invoke(enabled);
+        internal virtual void Initialize() { }
+        internal virtual void Toggle(bool enabled) => OnToggled?.Invoke(enabled);
 
         internal abstract void HandleHitChanged(RaycastHit hit);
+
+        protected void Disable() => OnToggled?.Invoke(false);
     }
 }

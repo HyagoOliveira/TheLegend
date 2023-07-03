@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8210472555174475114
 Transform:
   m_ObjectHideFlags: 0
@@ -102,7 +102,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5924690340303798603}
-  - {fileID: 3821018707784879201}
   - {fileID: 3563270853520177421}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -121,7 +120,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings: {fileID: 11400000, guid: 839370ace11398d4e999d7aca6bf7122, type: 2}
   freeLook: {fileID: 1288351111928478704}
-  ultrahandLook: {fileID: 8565673588225816282}
 --- !u!1 &4964318432089067356
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,13 +274,7 @@ MonoBehaviour:
   m_PositionMode: 0
   m_RotationMode: 0
   m_UpdateMethod: 2
-  m_Targets:
-  - target: {fileID: 0}
-    weight: 1
-    radius: 2
-  - target: {fileID: 0}
-    weight: 1
-    radius: 0
+  m_Targets: []
 --- !u!1 &6352783272232703613
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,6 +284,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3563270853520177421}
+  - component: {fileID: 6696164364652650277}
   m_Layer: 0
   m_Name: UltrahandCameraManager
   m_TagString: Untagged
@@ -311,22 +304,40 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3821018707784879201}
   - {fileID: 8210472555174475114}
   - {fileID: 4052632626758434549}
   m_Father: {fileID: 3166486084108870379}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6696164364652650277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6352783272232703613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 840c06fe63a16ab4f9117119bf79f76c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSettings: {fileID: 11400000, guid: 839370ace11398d4e999d7aca6bf7122, type: 2}
+  playerCameraManager: {fileID: 2830680606605183476}
+  freeLook: {fileID: 8565673588225816282}
+  interactionVC: {fileID: 1244588230293437683}
+  group: {fileID: 232670172018242177}
 --- !u!1001 &1018052600630816363
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 3166486084108870379}
+    m_TransformParent: {fileID: 3563270853520177421}
     m_Modifications:
     - target: {fileID: 4262135017165087242, guid: 9ed1e792a9a733146bdcb4525034b264, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4262135017165087242, guid: 9ed1e792a9a733146bdcb4525034b264, type: 3}
       propertyPath: m_LocalPosition.x
@@ -346,15 +357,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4262135017165087242, guid: 9ed1e792a9a733146bdcb4525034b264, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4262135017165087242, guid: 9ed1e792a9a733146bdcb4525034b264, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4262135017165087242, guid: 9ed1e792a9a733146bdcb4525034b264, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4262135017165087242, guid: 9ed1e792a9a733146bdcb4525034b264, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -371,6 +382,10 @@ PrefabInstance:
     - target: {fileID: 8238065415814993719, guid: 9ed1e792a9a733146bdcb4525034b264, type: 3}
       propertyPath: m_Name
       value: UltrahandLookVC
+      objectReference: {fileID: 0}
+    - target: {fileID: 8238065415814993719, guid: 9ed1e792a9a733146bdcb4525034b264, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

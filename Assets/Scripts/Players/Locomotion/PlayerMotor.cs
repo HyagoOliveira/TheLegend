@@ -107,6 +107,14 @@ namespace TheLegend.Players
             transform.LookAt(lookDirection);
         }
 
+        public Vector3 GetInputDirectionRelativeToCamera(Vector2 input)
+        {
+            var right = currentCamera.right;
+            right.y = 0f;
+            var forward = Vector3.Cross(right, Vector3.up);
+            return (right * input.x + forward * input.y).normalized;
+        }
+
         private void UpdateMovement()
         {
             UpdateCurrentSpeed();
@@ -165,13 +173,8 @@ namespace TheLegend.Players
 
         private bool IsWalkingInput() => AbsInputMagnitude < walkInputThreshold;
 
-        private Vector3 GetMoveInputDirectionRelativeToCamera()
-        {
-            var right = currentCamera.right;
-            right.y = 0f;
-            var forward = Vector3.Cross(right, Vector3.up);
-            return (right * MoveInput.x + forward * MoveInput.y).normalized;
-        }
+        private Vector3 GetMoveInputDirectionRelativeToCamera() =>
+            GetInputDirectionRelativeToCamera(MoveInput);
 
         private Vector3 GetLookDirection() => Locomotion switch
         {

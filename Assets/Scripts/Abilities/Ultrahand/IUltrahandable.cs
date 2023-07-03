@@ -7,6 +7,8 @@ namespace TheLegend.Abilities
     /// </summary>
     public interface IUltrahandable : IInteractable
     {
+        Transform transform { get; }
+
         void Move(Vector3 velocity);
     }
 }

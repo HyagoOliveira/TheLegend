@@ -15,6 +15,8 @@ namespace TheLegend.Players
     {
         [SerializeField] private Player player;
 
+        private UltrahandSettings UltrahandSettings => player.Settings.Ultrahand;
+
         private event Action OnUpdate;
 
         private NavigationActions navigation;
@@ -79,11 +81,11 @@ namespace TheLegend.Players
             var interactButton = ultrahand.Interact.WasPressedThisFrame();
             var cancelButton = ultrahand.Cancel.WasPressedThisFrame();
 
-            player.Ultrahand.MoveLaterally(laterallyAxis);
-            player.Ultrahand.MoveLongitudially(longitudiallyAxis);
+            UltrahandSettings.MoveLaterally(laterallyAxis);
+            UltrahandSettings.MoveLongitudially(longitudiallyAxis);
 
-            if (interactButton) player.Ultrahand.Interact();
-            else if (cancelButton) player.Ultrahand.CancelInteraction();
+            if (interactButton) UltrahandSettings.TryStartInteraction();
+            else if (cancelButton) UltrahandSettings.CancelInteraction();
         }
 
         private void HandleMovementToggled(bool enabled)

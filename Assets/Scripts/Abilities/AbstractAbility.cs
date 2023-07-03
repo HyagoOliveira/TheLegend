@@ -24,8 +24,6 @@ namespace TheLegend.Abilities
         protected virtual void Reset() => enabled = false;
         protected virtual void Awake() => settings.Initialize();
 
-        public abstract void Interact();
-
         public void Enable() => IsEnabled = true;
         public void Disable() => IsEnabled = false;
         public void Toggle() => IsEnabled = !IsEnabled;

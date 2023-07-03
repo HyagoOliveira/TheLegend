@@ -4,6 +4,7 @@ using TheLegend.Abilities;
 namespace TheLegend.Players
 {
     [DisallowMultipleComponent]
+    [DefaultExecutionOrder(-1)]
     [RequireComponent(typeof(Ultrahand))]
     [RequireComponent(typeof(PlayerMotor))]
     [RequireComponent(typeof(PlayerAnimator))]
@@ -13,6 +14,7 @@ namespace TheLegend.Players
         [field: SerializeField] public PlayerMotor Motor { get; private set; }
         [field: SerializeField] public PlayerAnimator Animator { get; private set; }
         [field: SerializeField] public Transform CameraPivot { get; private set; }
+        [field: SerializeField] public Transform UltrahandTransform { get; private set; }
 
         [field: Header("Abilities")]
         [field: SerializeField] public Ultrahand Ultrahand { get; private set; }
