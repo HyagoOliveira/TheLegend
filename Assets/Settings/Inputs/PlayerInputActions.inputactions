@@ -361,7 +361,7 @@
             "id": "b1f8cea6-c56f-454d-bc5d-be7aad5b9030",
             "actions": [
                 {
-                    "name": "MoveLongitudially",
+                    "name": "MoveAround",
                     "type": "Value",
                     "id": "f4376517-c7b6-48e7-be64-6eb990f28c79",
                     "expectedControlType": "Vector2",
@@ -405,7 +405,7 @@
                     "interactions": "",
                     "processors": "StickDeadzoneClamped",
                     "groups": "Gamepad",
-                    "action": "MoveLongitudially",
+                    "action": "MoveAround",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

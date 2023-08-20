@@ -385,7 +385,7 @@ namespace TheLegend.Players
             ""id"": ""b1f8cea6-c56f-454d-bc5d-be7aad5b9030"",
             ""actions"": [
                 {
-                    ""name"": ""MoveLongitudially"",
+                    ""name"": ""MoveAround"",
                     ""type"": ""Value"",
                     ""id"": ""f4376517-c7b6-48e7-be64-6eb990f28c79"",
                     ""expectedControlType"": ""Vector2"",
@@ -429,7 +429,7 @@ namespace TheLegend.Players
                     ""interactions"": """",
                     ""processors"": ""StickDeadzoneClamped"",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""MoveLongitudially"",
+                    ""action"": ""MoveAround"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1137,7 +1137,7 @@ namespace TheLegend.Players
             m_Navigation_Ultrahand = m_Navigation.FindAction("Ultrahand", throwIfNotFound: true);
             // Ultrahand
             m_Ultrahand = asset.FindActionMap("Ultrahand", throwIfNotFound: true);
-            m_Ultrahand_MoveLongitudially = m_Ultrahand.FindAction("MoveLongitudially", throwIfNotFound: true);
+            m_Ultrahand_MoveAround = m_Ultrahand.FindAction("MoveAround", throwIfNotFound: true);
             m_Ultrahand_MoveLaterally = m_Ultrahand.FindAction("MoveLaterally", throwIfNotFound: true);
             m_Ultrahand_Interact = m_Ultrahand.FindAction("Interact", throwIfNotFound: true);
             m_Ultrahand_Cancel = m_Ultrahand.FindAction("Cancel", throwIfNotFound: true);
@@ -1316,7 +1316,7 @@ namespace TheLegend.Players
         // Ultrahand
         private readonly InputActionMap m_Ultrahand;
         private List<IUltrahandActions> m_UltrahandActionsCallbackInterfaces = new List<IUltrahandActions>();
-        private readonly InputAction m_Ultrahand_MoveLongitudially;
+        private readonly InputAction m_Ultrahand_MoveAround;
         private readonly InputAction m_Ultrahand_MoveLaterally;
         private readonly InputAction m_Ultrahand_Interact;
         private readonly InputAction m_Ultrahand_Cancel;
@@ -1324,7 +1324,7 @@ namespace TheLegend.Players
         {
             private @PlayerInputActions m_Wrapper;
             public UltrahandActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
-            public InputAction @MoveLongitudially => m_Wrapper.m_Ultrahand_MoveLongitudially;
+            public InputAction @MoveAround => m_Wrapper.m_Ultrahand_MoveAround;
             public InputAction @MoveLaterally => m_Wrapper.m_Ultrahand_MoveLaterally;
             public InputAction @Interact => m_Wrapper.m_Ultrahand_Interact;
             public InputAction @Cancel => m_Wrapper.m_Ultrahand_Cancel;
@@ -1337,9 +1337,9 @@ namespace TheLegend.Players
             {
                 if (instance == null || m_Wrapper.m_UltrahandActionsCallbackInterfaces.Contains(instance)) return;
                 m_Wrapper.m_UltrahandActionsCallbackInterfaces.Add(instance);
-                @MoveLongitudially.started += instance.OnMoveLongitudially;
-                @MoveLongitudially.performed += instance.OnMoveLongitudially;
-                @MoveLongitudially.canceled += instance.OnMoveLongitudially;
+                @MoveAround.started += instance.OnMoveAround;
+                @MoveAround.performed += instance.OnMoveAround;
+                @MoveAround.canceled += instance.OnMoveAround;
                 @MoveLaterally.started += instance.OnMoveLaterally;
                 @MoveLaterally.performed += instance.OnMoveLaterally;
                 @MoveLaterally.canceled += instance.OnMoveLaterally;
@@ -1353,9 +1353,9 @@ namespace TheLegend.Players
 
             private void UnregisterCallbacks(IUltrahandActions instance)
             {
-                @MoveLongitudially.started -= instance.OnMoveLongitudially;
-                @MoveLongitudially.performed -= instance.OnMoveLongitudially;
-                @MoveLongitudially.canceled -= instance.OnMoveLongitudially;
+                @MoveAround.started -= instance.OnMoveAround;
+                @MoveAround.performed -= instance.OnMoveAround;
+                @MoveAround.canceled -= instance.OnMoveAround;
                 @MoveLaterally.started -= instance.OnMoveLaterally;
                 @MoveLaterally.performed -= instance.OnMoveLaterally;
                 @MoveLaterally.canceled -= instance.OnMoveLaterally;
@@ -1558,7 +1558,7 @@ namespace TheLegend.Players
         }
         public interface IUltrahandActions
         {
-            void OnMoveLongitudially(InputAction.CallbackContext context);
+            void OnMoveAround(InputAction.CallbackContext context);
             void OnMoveLaterally(InputAction.CallbackContext context);
             void OnInteract(InputAction.CallbackContext context);
             void OnCancel(InputAction.CallbackContext context);

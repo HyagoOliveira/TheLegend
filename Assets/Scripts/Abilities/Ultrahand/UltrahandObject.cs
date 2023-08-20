@@ -8,7 +8,11 @@ namespace TheLegend.Abilities
     {
         [SerializeField] private Rigidbody body;
 
-        public bool IsInteracting { get; private set; }
+        public bool IsInteracting
+        {
+            get => body.isKinematic;
+            private set => body.isKinematic = value;
+        }
 
         //private FixedJoint joint;
 
@@ -26,16 +30,7 @@ namespace TheLegend.Abilities
             body.position += velocity;
         }
 
-        public void Interact()
-        {
-            IsInteracting = true;
-            body.isKinematic = IsInteracting;
-        }
-
-        public void CancelInteraction()
-        {
-            IsInteracting = false;
-            body.isKinematic = IsInteracting;
-        }
+        public void Interact() => IsInteracting = true;
+        public void CancelInteraction() => IsInteracting = false;
     }
 }

@@ -28,7 +28,7 @@ namespace TheLegend.Players
             Ultrahand = GetComponent<Ultrahand>();
         }
 
-        private void Awake() => Settings.Initialize(this);
+        private void Start() => Settings.Initialize(this);
 
         private void OnEnable()
         {

@@ -1,7 +1,6 @@
 using UnityEngine;
 using Cinemachine;
 using TheLegend.Abilities;
-using System;
 
 namespace TheLegend.Players
 {
@@ -14,7 +13,7 @@ namespace TheLegend.Players
         public CinemachineVirtualCameraBase CurrentCamera
         {
             get => currentCamera;
-            set
+            internal set
             {
                 currentCamera.Replace(value);
                 currentCamera = value;

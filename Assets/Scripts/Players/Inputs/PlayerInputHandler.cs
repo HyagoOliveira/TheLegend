@@ -76,13 +76,13 @@ namespace TheLegend.Players
 
         private void UpdateUltrahandActions()
         {
+            var aroundAxis = ultrahand.MoveAround.ReadValue<Vector2>();
             var laterallyAxis = ultrahand.MoveLaterally.ReadValue<Vector2>();
-            var longitudiallyAxis = ultrahand.MoveLongitudially.ReadValue<Vector2>();
             var interactButton = ultrahand.Interact.WasPressedThisFrame();
             var cancelButton = ultrahand.Cancel.WasPressedThisFrame();
 
-            UltrahandSettings.MoveLaterally(laterallyAxis);
-            UltrahandSettings.MoveLongitudially(longitudiallyAxis);
+            //UltrahandSettings.MoveAround(aroundAxis);
+            //UltrahandSettings.MoveLaterally(laterallyAxis);
 
             if (interactButton) UltrahandSettings.TryStartInteraction();
             else if (cancelButton) UltrahandSettings.CancelInteraction();

@@ -71,14 +71,16 @@ namespace TheLegend.Players
 
         private void OnEnable()
         {
-            settings.OnAbilityEnabled += HandleAbilityEnabled;
-            settings.OnAbilityDisabled += HandleAbilityDisabled;
+            settings.Ultrahand.OnToggled += HandleUltrahandToggled;
+            settings.Ultrahand.OnInteractionStarted += HandleUltrahandStarted;
+            settings.Ultrahand.OnInteractionCanceled += HandleUltrahandCanceled;
         }
 
         private void OnDisable()
         {
-            settings.OnAbilityEnabled -= HandleAbilityEnabled;
-            settings.OnAbilityDisabled -= HandleAbilityDisabled;
+            settings.Ultrahand.OnToggled -= HandleUltrahandToggled;
+            settings.Ultrahand.OnInteractionStarted -= HandleUltrahandStarted;
+            settings.Ultrahand.OnInteractionCanceled -= HandleUltrahandCanceled;
         }
 
         public bool IsMoving() => Mathf.Abs(Velocity.sqrMagnitude) > 0F;
@@ -193,17 +195,14 @@ namespace TheLegend.Players
 
         private float GetNormalSpeed() => IsWalkingInput() ? walkSpeed : runSpeed;
 
-        private void HandleAbilityEnabled(AbilityType type)
+        private void HandleUltrahandToggled(bool enabled)
         {
-            switch (type)
-            {
-                case AbilityType.Ultrahand:
-                    StartStandLocomotion();
-                    break;
-            }
+            if (!enabled) return;
+            StartStandLocomotion();
         }
 
-        private void HandleAbilityDisabled(AbilityType _) => StartFreeLocomotion();
+        private void HandleUltrahandStarted(IUltrahandable _) => StartStrafeLocomotion();
+        private void HandleUltrahandCanceled(IUltrahandable _) => StartFreeLocomotion();
 
         private static float RoundIntoThreeDecimalPlaces(float value) =>
             Mathf.Round(value * 1000f) / 1000f;
