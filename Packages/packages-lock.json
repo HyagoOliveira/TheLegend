@@ -47,6 +47,13 @@
       },
       "url": "http://34.125.146.81:4873"
     },
+    "com.oss.leantween": {
+      "version": "2.50.4",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "http://34.125.146.81:4873"
+    },
     "com.unity.burst": {
       "version": "1.8.7",
       "depth": 1,
