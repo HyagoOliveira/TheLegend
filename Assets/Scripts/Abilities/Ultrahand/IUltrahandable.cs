@@ -9,6 +9,6 @@ namespace TheLegend.Abilities
     {
         Transform transform { get; }
 
-        void Move(Vector3 velocity);
+        void Rotate(Vector3 angle, float time);
     }
 }

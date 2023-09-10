@@ -21,6 +21,7 @@ namespace TheLegend.Abilities
             audioSource = GetComponent<AudioSource>();
             detector = GetComponent<HighlightableDetector>();
         }
+
         private void Awake() => playerSettings.AbilityCaster = caster;
 
         private void OnEnable()

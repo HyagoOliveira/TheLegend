@@ -6,9 +6,6 @@ using static TheLegend.Players.PlayerInputActions;
 
 namespace TheLegend.Players
 {
-    /// <summary>
-    /// Component responsible to receive the inputs and forward them into <see cref="PlayerMotor_Character"/>.
-    /// </summary>
     [DefaultExecutionOrder(-1)]
     [RequireComponent(typeof(Player))]
     public class PlayerInputHandler : MonoBehaviour
@@ -42,6 +39,8 @@ namespace TheLegend.Players
             player.Settings.OnMovementToggled += HandleMovementToggled;
             player.Settings.OnAbilityEnabled += HandleAbilityEnabled;
             player.Settings.OnAbilityDisabled += HandleAbilityDisabled;
+            player.Settings.Ultrahand.OnInteractionStarted += HandleUltrahandInteractionStarted;
+            player.Settings.Ultrahand.OnInteractionCanceled += HandleUltrahandInteractionCanceled;
         }
 
         private void OnDisable()
@@ -52,6 +51,8 @@ namespace TheLegend.Players
             player.Settings.OnMovementToggled -= HandleMovementToggled;
             player.Settings.OnAbilityEnabled -= HandleAbilityEnabled;
             player.Settings.OnAbilityDisabled -= HandleAbilityDisabled;
+            player.Settings.Ultrahand.OnInteractionStarted -= HandleUltrahandInteractionStarted;
+            player.Settings.Ultrahand.OnInteractionCanceled -= HandleUltrahandInteractionCanceled;
         }
 
         private void UpdateNavigationActions()
@@ -67,25 +68,46 @@ namespace TheLegend.Players
                 player.Motor.StartSprint,
                 player.Motor.CancelSprint
             );
-            /*UpdateButtonActions(
+            UpdateButtonActions(
                 navigation.Strafe,
                 player.Motor.StartStrafeLocomotion,
                 player.Motor.StartFreeLocomotion
-            );*/
+            );
+        }
+
+        private void UpdateUltrahandSearchingActions()
+        {
+            var interactButton = ultrahand.Interact.WasPressedThisFrame();
+            var cancelButton = ultrahand.Cancel.WasPressedThisFrame();
+
+            if (interactButton) UltrahandSettings.TryStartInteraction();
+            else if (cancelButton) UltrahandSettings.CancelInteraction();
         }
 
         private void UpdateUltrahandActions()
         {
-            var aroundAxis = ultrahand.MoveAround.ReadValue<Vector2>();
-            var laterallyAxis = ultrahand.MoveLaterally.ReadValue<Vector2>();
-            var interactButton = ultrahand.Interact.WasPressedThisFrame();
+            var isHoldingRotateButton = ultrahand.Rotate.IsPressed();
             var cancelButton = ultrahand.Cancel.WasPressedThisFrame();
+            var resetRotationButton = ultrahand.ResetRotation.WasPressedThisFrame();
 
-            //UltrahandSettings.MoveAround(aroundAxis);
-            //UltrahandSettings.MoveLaterally(laterallyAxis);
+            if (cancelButton) UltrahandSettings.CancelInteraction();
+            else if (resetRotationButton) UltrahandSettings.ResetRotation();
 
-            if (interactButton) UltrahandSettings.TryStartInteraction();
-            else if (cancelButton) UltrahandSettings.CancelInteraction();
+            UltrahandSettings.EnableRotation(isHoldingRotateButton);
+
+            if (isHoldingRotateButton)
+            {
+                var rotation = ultrahand.RotateAxis.ReadValue<Vector2>();
+                UltrahandSettings.Rotate(rotation);
+            }
+            else
+            {
+                var moveDistally = ultrahand.MoveDistally.ReadValue<float>();
+                var moveVertically = ultrahand.MoveVertically.ReadValue<float>();
+
+                UltrahandSettings.MoveDistally(moveDistally);
+                UltrahandSettings.MoveVertically(moveVertically);
+            }
         }
 
         private void HandleMovementToggled(bool enabled)
@@ -99,7 +121,7 @@ namespace TheLegend.Players
             switch (type)
             {
                 case AbilityType.Ultrahand:
-                    OnUpdate += UpdateUltrahandActions;
+                    OnUpdate += UpdateUltrahandSearchingActions;
                     break;
             }
         }
@@ -109,10 +131,16 @@ namespace TheLegend.Players
             switch (type)
             {
                 case AbilityType.Ultrahand:
-                    OnUpdate -= UpdateUltrahandActions;
+                    OnUpdate -= UpdateUltrahandSearchingActions;
                     break;
             }
         }
+
+        private void HandleUltrahandInteractionStarted(IUltrahandable _) =>
+            OnUpdate += UpdateUltrahandActions;
+
+        private void HandleUltrahandInteractionCanceled(IUltrahandable _) =>
+            OnUpdate -= UpdateUltrahandActions;
 
         private static void UpdateButtonActions(
             InputAction button,

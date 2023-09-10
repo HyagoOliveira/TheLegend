@@ -14,7 +14,6 @@ namespace TheLegend.Players
         [field: SerializeField] public PlayerMotor Motor { get; private set; }
         [field: SerializeField] public PlayerAnimator Animator { get; private set; }
         [field: SerializeField] public Transform CameraPivot { get; private set; }
-        [field: SerializeField] public Transform UltrahandTransform { get; private set; }
 
         [field: Header("Abilities")]
         [field: SerializeField] public Ultrahand Ultrahand { get; private set; }
@@ -24,7 +23,6 @@ namespace TheLegend.Players
             Motor = GetComponent<PlayerMotor>();
             Animator = GetComponent<PlayerAnimator>();
             CameraPivot = transform.Find(nameof(CameraPivot));
-
             Ultrahand = GetComponent<Ultrahand>();
         }
 

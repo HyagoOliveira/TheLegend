@@ -7,6 +7,9 @@ namespace TheLegend.Abilities
     public sealed class UltrahandObject : MonoBehaviour, IUltrahandable
     {
         [SerializeField] private Rigidbody body;
+        //private FixedJoint joint;
+
+        private bool lockRotation;
 
         public bool IsInteracting
         {
@@ -14,23 +17,34 @@ namespace TheLegend.Abilities
             private set => body.isKinematic = value;
         }
 
-        //private FixedJoint joint;
-
         private void Reset() => body = GetComponent<Rigidbody>();
-
-        public void Move(Vector3 velocity)
-        {
-            if (!IsInteracting) return;
-
-            var moveDirection = velocity.normalized;
-            var hasHit = body.SweepTest(moveDirection, out RaycastHit hit, maxDistance: 0.1F);
-            var hasStaticCollision = hasHit && hit.transform.gameObject.isStatic;
-            if (hasStaticCollision) velocity = Vector3.zero;
-
-            body.position += velocity;
-        }
 
         public void Interact() => IsInteracting = true;
         public void CancelInteraction() => IsInteracting = false;
+
+        public void Rotate(Vector3 angle, float time)
+        {
+            if (lockRotation) return;
+
+            lockRotation = true;
+
+            var seq = LeanTween.sequence();
+            var rotation = transform.localEulerAngles + angle;
+
+            seq.append(LeanTween.rotateLocal(gameObject, rotation, time).setEaseInOutBack());
+            seq.append(() => lockRotation = false);
+        }
+
+        /*public void Move(Transform holder)
+        {
+            if (!IsInteracting) return;
+
+            var direction = (holder.position - body.position).normalized;
+            var hasHit = body.SweepTest(direction, out RaycastHit hit, maxDistance: 0.1F);
+            var hasStaticCollision = hasHit && hit.transform.gameObject.isStatic;
+            var position = hasStaticCollision ? hit.point : holder.position;
+
+            body.Move(position, holder.rotation);
+        }*/
     }
 }

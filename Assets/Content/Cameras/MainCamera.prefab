@@ -31,13 +31,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6694758930833847472}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.09299616, y: 0, z: 0, w: 0.9956665}
   m_LocalPosition: {x: 0, y: 2.5, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 10.672, y: 0, z: 0}
 --- !u!20 &5080255261826527853
 Camera:
@@ -287,7 +287,7 @@ MonoBehaviour:
   collisions:
     serializedVersion: 2
     m_Bits: 64
-  distance: 40
+  distance: 15
   camera: {fileID: 5080255261826527853}
 --- !u!114 &7597130513459658799
 MonoBehaviour:

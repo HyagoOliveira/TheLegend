@@ -7,90 +7,106 @@ namespace TheLegend.Abilities
     [CreateAssetMenu(fileName = "UltrahandSettings", menuName = "TheLegend/Abilities/Ultrahand Settings", order = 110)]
     public sealed class UltrahandSettings : AbstractAbilitySettings
     {
-        [SerializeField, Min(0f)] private float moveSpeed = 10F;
-        [SerializeField, Min(0f)] private float rotateSpeed = 60f;
-        [SerializeField, Min(0f)] private float maxDistance = 10f;
+        [SerializeField, Min(0f)] private float distalSpeed = 6F;
+        [SerializeField, Min(0f)] private float verticalSpeed = 4F;
+        [SerializeField, Min(0f)] private float rotateTime = 0.5f;
+        [SerializeField, Min(0f)] private float rotateAngle = 45f;
+        [SerializeField, Min(0f)] private float minDistalDistance = 2f;
+        [SerializeField, Min(0f)] private float maxDistalDistance = 10f;
+        [SerializeField, Min(0f)] private float maxVerticalDistance = 3f;
 
         public event Action<bool> OnSelectionChanged;
         public event Action<IUltrahandable> OnInteractionStarted;
         public event Action<IUltrahandable> OnInteractionCanceled;
 
-        public bool IsInteracting => CurrentUltrahandable != null;
-        public float CurrentDistance { get; private set; }
         public IUltrahandable CurrentUltrahandable { get; private set; }
 
-        internal void Update()
-        {
-            if (!IsInteracting) return;
+        public bool IsHolding() => CurrentUltrahandable != null;
 
-            DrawLineBetweenPlayerAndObject();
-            UpdateObjectAccordinglyToPlayer();
-        }
-
-        public void MoveLaterally(Vector2 input)
-        {
-            if (!IsInteracting) return;
-
-            var direction = Player.Motor.GetInputDirectionRelativeToCamera(input);
-            var velocity = moveSpeed * Time.deltaTime * direction;
-            var nextPosition = CurrentUltrahandable.transform.position + velocity;
-            var distance = Vector3.Distance(
-                Player.transform.position,
-                nextPosition
-            );
-            var hasMaxDistance = distance > maxDistance;
-            if (hasMaxDistance) velocity = Vector3.zero;
-
-            CurrentUltrahandable.Move(velocity);
-        }
-
-        public void MoveAround(Vector2 input)
-        {
-            if (!IsInteracting) return;
-
-            var angle = rotateSpeed * Time.deltaTime;
-            var direction = new Vector3(-input.y, input.x);
-            var rotation = CurrentUltrahandable.transform.rotation;
-
-            CurrentUltrahandable.transform.RotateAround(
-                Player.transform.position,
-                direction,
-                angle
-            );
-            CurrentUltrahandable.transform.rotation = rotation;
-        }
-
-        internal void TryStartInteraction()
+        public void TryStartInteraction()
         {
             Player.Motor.TurnTowardCameraDirection();
             Player.Animator.PlayUltrahandInteraction();
 
-            if (IsInteracting) return;
+            if (IsHolding()) return;
 
             var hasUltrahandable = PlayerSettings.AbilityCaster.
                 TryGetHittingComponent(out IUltrahandable ultrahandable);
             if (!hasUltrahandable) return;
 
-            ultrahandable.Interact();
-            OnInteractionStarted?.Invoke(ultrahandable);
-
             CurrentUltrahandable = ultrahandable;
-            CurrentDistance = Vector3.Distance(
-                Player.transform.position,
-                CurrentUltrahandable.transform.position
-            );
+
+            Player.Ultrahand.AttachHolder(CurrentUltrahandable.transform);
+
+            CurrentUltrahandable.Interact();
+            OnInteractionStarted?.Invoke(CurrentUltrahandable);
         }
 
-        internal void CancelInteraction()
+        public void CancelInteraction()
         {
-            if (!IsInteracting) return;
-
             Disable();
+
+            if (!IsHolding()) return;
+
             CurrentUltrahandable.CancelInteraction();
             OnInteractionCanceled?.Invoke(CurrentUltrahandable);
 
-            CurrentDistance = 0f;
+            Player.Ultrahand.UnttachHolder(CurrentUltrahandable.transform);
+
             CurrentUltrahandable = null;
+        }
+
+        public void MoveDistally(float input)
+        {
+            var speed = input * distalSpeed * Time.deltaTime;
+            var position = Player.Ultrahand.Holder.position;
+            var nextPosition = position + Player.transform.forward * speed;
+            var distance = GetDistalDistanceFromPlayer(nextPosition);
+            var hasMaxDistance = distance > maxDistalDistance;
+            var hasMinDistance = distance < minDistalDistance;
+            var hasInvalidDistance = hasMaxDistance || hasMinDistance;
+
+            if (hasInvalidDistance) return;
+
+            Player.Ultrahand.Holder.position = nextPosition;
+        }
+
+        public void MoveVertically(float input)
+        {
+            var speed = input * verticalSpeed * Time.deltaTime;
+            var position = Player.Ultrahand.Holder.position;
+            var nextPosition = position + Vector3.up * speed;
+            var distance = GetVerticalDistanceFromPlayer(nextPosition);
+            var hasMaxDistance = distance > maxVerticalDistance;
+            var isBellowPlayer = nextPosition.y < Player.transform.position.y;
+            var hasInvalidDistance = hasMaxDistance || isBellowPlayer;
+
+            if (hasInvalidDistance) return;
+
+            Player.Ultrahand.Holder.position = nextPosition;
+        }
+
+        public void EnableRotation(bool enabled)
+        {
+            Player.Ultrahand.EnableDirectionalIndicator(enabled);
+        }
+
+        public void Rotate(Vector2 input)
+        {
+            var hasInput = Mathf.Abs(input.sqrMagnitude) > 0F;
+            if (!hasInput) return;
+
+            var axis = new Vector2(input.y, -input.x);
+            var angle = axis * rotateAngle;
+            //var cameraRightDir = Player.Motor.GetCameraRightDirection();
+            //var angle = axis * cameraRightDir;
+
+            CurrentUltrahandable.Rotate(angle, rotateTime);
+        }
+
+        public void ResetRotation()
+        {
+            CurrentUltrahandable.transform.localRotation = Quaternion.identity;
         }
 
         internal override void Toggle(bool enabled)
@@ -108,19 +124,20 @@ namespace TheLegend.Abilities
             OnSelectionChanged?.Invoke(hasUltrahandable);
         }
 
-        private void UpdateObjectAccordinglyToPlayer()
+        private float GetDistalDistanceFromPlayer(Vector3 position)
         {
-            var direction = (CurrentUltrahandable.transform.position - Player.transform.position).normalized;
-            CurrentUltrahandable.transform.position = Player.transform.position + direction * CurrentDistance;
+            var playerPos = Player.transform.position;
+
+            playerPos.y = 0f;
+            position.y = 0f;
+
+            return Vector3.Distance(playerPos, position);
         }
 
-        private void DrawLineBetweenPlayerAndObject()
+        private float GetVerticalDistanceFromPlayer(Vector3 position)
         {
-            Debug.DrawLine(
-                Player.UltrahandTransform.position,
-                CurrentUltrahandable.transform.position,
-                Color.green
-            );
+            var verticalDelta = position.y - Player.transform.position.y;
+            return Mathf.Abs(verticalDelta);
         }
     }
 }

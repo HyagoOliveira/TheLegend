@@ -28,9 +28,10 @@ MonoBehaviour:
     m_ConfigSource: 0
   - m_Id: scoped:project:Action Code
     m_Name: Action Code
-    m_Url: http://34.151.243.47:4873
+    m_Url: http://34.125.146.81:4873
     m_Scopes:
     - com.actioncode
+    - com.oss
     m_IsDefault: 0
     m_Capabilities: 0
     m_ConfigSource: 4
@@ -39,6 +40,6 @@ MonoBehaviour:
   m_RegistryInfoDraft:
     m_Modified: 0
     m_ErrorMessage: 
-    m_UserModificationsInstanceId: -834
-    m_OriginalInstanceId: -836
+    m_UserModificationsInstanceId: -838
+    m_OriginalInstanceId: -842
   m_LoadAssets: 0

@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: UltrahandSettings
   m_EditorClassIdentifier: 
   <PlayerSettings>k__BackingField: {fileID: 11400000, guid: 839370ace11398d4e999d7aca6bf7122, type: 2}
-  moveSpeed: 10
-  rotateSpeed: 60
-  maxDistance: 10
+  distalSpeed: 6
+  verticalSpeed: 4
+  rotateSpeed: 2
+  rotateAngle: 45
+  minDistalDistance: 2
+  maxDistalDistance: 10
+  maxVerticalDistance: 3

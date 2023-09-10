@@ -63,11 +63,14 @@ namespace TheLegend.Players
         private void Awake() => currentCamera = Camera.main.transform;
         private void Start() => Locomotion = initialLocomotion;
 
-        private void FixedUpdate()
+        private void Update()
         {
-            UpdateMovement();
+            UpdateCurrentSpeed();
+            UpdateMoveDirection();
             UpdateRotation();
         }
+
+        private void FixedUpdate() => UpdateMovement();
 
         private void OnEnable()
         {
@@ -119,9 +122,6 @@ namespace TheLegend.Players
 
         private void UpdateMovement()
         {
-            UpdateCurrentSpeed();
-            UpdateMoveDirection();
-
             var isMovingIntoCollision = IsMoveInputting && IsForwardCollision();
 
             Velocity = isMovingIntoCollision ? Vector3.zero : Speed * moveDirection;
@@ -197,8 +197,8 @@ namespace TheLegend.Players
 
         private void HandleUltrahandToggled(bool enabled)
         {
-            if (!enabled) return;
-            StartStandLocomotion();
+            if (enabled) StartStandLocomotion();
+            else StartFreeLocomotion();
         }
 
         private void HandleUltrahandStarted(IUltrahandable _) => StartStrafeLocomotion();

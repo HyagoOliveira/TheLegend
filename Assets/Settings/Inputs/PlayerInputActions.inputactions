@@ -361,19 +361,19 @@
             "id": "b1f8cea6-c56f-454d-bc5d-be7aad5b9030",
             "actions": [
                 {
-                    "name": "MoveAround",
+                    "name": "MoveDistally",
                     "type": "Value",
-                    "id": "f4376517-c7b6-48e7-be64-6eb990f28c79",
-                    "expectedControlType": "Vector2",
-                    "processors": "StickDeadzoneClamped",
+                    "id": "b0d19030-a5e7-45eb-8895-a75f08743ae3",
+                    "expectedControlType": "Axis",
+                    "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
                 },
                 {
-                    "name": "MoveLaterally",
+                    "name": "MoveVertically",
                     "type": "Value",
-                    "id": "b0d19030-a5e7-45eb-8895-a75f08743ae3",
-                    "expectedControlType": "Vector2",
+                    "id": "d8c746e3-e718-44e2-a881-5cf4b87d6a5e",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -395,83 +395,77 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Rotate",
+                    "type": "Button",
+                    "id": "66072934-fbff-42e5-a75e-a16467909bc6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RotateAxis",
+                    "type": "Value",
+                    "id": "862d459e-4346-405b-b129-32bb5a1e07ab",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ResetRotation",
+                    "type": "Button",
+                    "id": "91d09ef4-a8a8-40e8-85ee-e823e18afbb6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
-                    "id": "7a442f15-dde9-4ead-b123-8ae4d0921183",
-                    "path": "<Gamepad>/rightStick",
-                    "interactions": "",
-                    "processors": "StickDeadzoneClamped",
-                    "groups": "Gamepad",
-                    "action": "MoveAround",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "f778904c-5931-4c7d-ad98-816d86e05173",
-                    "path": "<Gamepad>/dpad",
+                    "path": "<Gamepad>/dpad/y",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "MoveLaterally",
+                    "action": "MoveDistally",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "Numpad",
                     "id": "bc87f4a6-4931-41ff-b7b8-12631dd60834",
-                    "path": "2DVector",
+                    "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MoveLaterally",
+                    "action": "MoveDistally",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
+                    "name": "Negative",
                     "id": "2b702be4-0f43-4b6e-bc47-1832f9ad1a4c",
-                    "path": "<Keyboard>/numpad8",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "MoveLaterally",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "2b39f8c4-4496-49aa-8f47-c44e9306cc79",
                     "path": "<Keyboard>/numpad2",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "MoveLaterally",
+                    "action": "MoveDistally",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "left",
-                    "id": "b00e8d1d-1d1f-4233-9e7f-2b9c7a33ca82",
-                    "path": "<Keyboard>/numpad4",
+                    "name": "Positive",
+                    "id": "2b39f8c4-4496-49aa-8f47-c44e9306cc79",
+                    "path": "<Keyboard>/numpad8",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "MoveLaterally",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "779d454e-bda1-456b-98d4-6caa29561cf7",
-                    "path": "<Keyboard>/numpad6",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "MoveLaterally",
+                    "action": "MoveDistally",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -516,6 +510,138 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a3e4c6a5-3835-4505-855e-7bd2148dea4e",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Rotate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5df76659-b40b-4fc9-89bf-1b1f25602e79",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Rotate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b157e163-24af-4da4-99a3-b42893f3489f",
+                    "path": "<Gamepad>/rightStick/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "MoveVertically",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "54ec0de5-7c3b-4b70-bc9d-830a3b793624",
+                    "path": "<Mouse>/delta/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "MoveVertically",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "658b5442-1c0b-48fe-985a-451253644aff",
+                    "path": "<Gamepad>/dpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "RotateAxis",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Numpad",
+                    "id": "8e5053c0-fc85-407b-b384-7811586497b6",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateAxis",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "20b4130e-9a34-4d19-961b-60a72cdbf1d8",
+                    "path": "<Keyboard>/8",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "RotateAxis",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "47eedbeb-8688-481b-b1d4-90a54c357c48",
+                    "path": "<Keyboard>/numpad2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "RotateAxis",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "b4089311-d72e-4e7d-967d-9428d2c187cf",
+                    "path": "<Keyboard>/numpad4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "RotateAxis",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "46ed2564-9fac-4109-a1af-8c3d8448bb6f",
+                    "path": "<Keyboard>/numpad6",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "RotateAxis",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "e6f3e743-80ae-467d-b27a-5d3f9b37ec42",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "ResetRotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3b523428-d00d-4965-8152-49ece5235c67",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "ResetRotation",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
