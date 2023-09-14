@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2763186999997360829}
   - component: {fileID: 6124780854295260408}
   m_Layer: 5
-  m_Name: UltraHand
+  m_Name: Ultrahand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

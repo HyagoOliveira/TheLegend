@@ -3240,7 +3240,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1087722876039677096, guid: 9598c630ae41949459dadc352ac280e5, type: 3}
       propertyPath: m_Name
-      value: UltraHand
+      value: Ultrahand
       objectReference: {fileID: 0}
     - target: {fileID: 2763186999997360829, guid: 9598c630ae41949459dadc352ac280e5, type: 3}
       propertyPath: m_Pivot.x
@@ -3249,10 +3249,6 @@ PrefabInstance:
     - target: {fileID: 2763186999997360829, guid: 9598c630ae41949459dadc352ac280e5, type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2763186999997360829, guid: 9598c630ae41949459dadc352ac280e5, type: 3}
-      propertyPath: m_RootOrder
-      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2763186999997360829, guid: 9598c630ae41949459dadc352ac280e5, type: 3}
       propertyPath: m_AnchorMax.x
