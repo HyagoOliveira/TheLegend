@@ -582,7 +582,7 @@
                 {
                     "name": "up",
                     "id": "20b4130e-9a34-4d19-961b-60a72cdbf1d8",
-                    "path": "<Keyboard>/8",
+                    "path": "<Keyboard>/numpad8",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
