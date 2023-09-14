@@ -22,19 +22,6 @@ namespace TheLegend.Abilities
         public void Interact() => IsInteracting = true;
         public void CancelInteraction() => IsInteracting = false;
 
-        public void Rotate(Vector3 angle, float time)
-        {
-            if (lockRotation) return;
-
-            lockRotation = true;
-
-            var seq = LeanTween.sequence();
-            var rotation = transform.localEulerAngles + angle;
-
-            seq.append(LeanTween.rotateLocal(gameObject, rotation, time).setEaseInOutBack());
-            seq.append(() => lockRotation = false);
-        }
-
         /*public void Move(Transform holder)
         {
             if (!IsInteracting) return;

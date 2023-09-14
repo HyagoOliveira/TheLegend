@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 namespace TheLegend.Abilities
 {
@@ -9,6 +10,10 @@ namespace TheLegend.Abilities
         [field: SerializeField] public Transform Holder { get; private set; }
 
         [SerializeField] private GameObject directionalIndicator;
+
+        private static Coroutine rotateCoroutine;
+        private static Quaternion desiredRotation;
+        private static readonly WaitForEndOfFrame waitOneFrame = new();
 
         private void Update() => DrawLineBetweenHandAndObject();
 
@@ -40,6 +45,66 @@ namespace TheLegend.Abilities
                 Holder.position,
                 Color.green
             );
+        }
+
+        public void Rotate(Vector2 input, Transform transform, float angle, float time)
+        {
+            CheckLastRotation(transform);
+
+            var verticalRotation = Vector3.down * input.x;
+            var horizontalRotation = Vector3.right * input.y;
+            var worldAxis = verticalRotation + horizontalRotation;
+            var worldRotation = RemoveModule(worldAxis * angle, angle);
+            var localRotation = Quaternion.Euler(worldRotation) * transform.localRotation;
+
+            rotateCoroutine = StartCoroutine(RotateRoutine(transform, localRotation, time));
+        }
+
+        public void ResetRotation(Transform transform, float time) =>
+            rotateCoroutine = StartCoroutine(RotateRoutine(transform, to: Quaternion.identity, time));
+
+        private void CheckLastRotation(Transform transform)
+        {
+            if (rotateCoroutine != null)
+            {
+                StopCoroutine(rotateCoroutine);
+                transform.localRotation = desiredRotation;
+            }
+        }
+
+        private static IEnumerator RotateRoutine(Transform transform, Quaternion to, float time)
+        {
+            var t = 0f;
+            var speed = 1F / time;
+            var from = transform.localRotation;
+
+            desiredRotation = to;
+
+            do
+            {
+                transform.localRotation = Quaternion.Slerp(from, to, t);
+                t += Time.deltaTime * speed;
+
+                yield return waitOneFrame;
+            } while (t < 1f);
+
+            transform.localRotation = to;
+            rotateCoroutine = null;
+        }
+
+        private static Vector3 RemoveModule(Vector3 value, float module)
+        {
+            return new(
+                RemoveModule(value.x, module),
+                RemoveModule(value.y, module),
+                RemoveModule(value.z, module)
+            );
+        }
+
+        private static float RemoveModule(float value, float module)
+        {
+            var over = value % module;
+            return value - over;
         }
     }
 }

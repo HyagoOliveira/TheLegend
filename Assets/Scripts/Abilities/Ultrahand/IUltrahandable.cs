@@ -8,7 +8,5 @@ namespace TheLegend.Abilities
     public interface IUltrahandable : IInteractable
     {
         Transform transform { get; }
-
-        void Rotate(Vector3 angle, float time);
     }
 }

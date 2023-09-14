@@ -88,25 +88,27 @@ namespace TheLegend.Players
         {
             var isHoldingRotateButton = ultrahand.Rotate.IsPressed();
             var cancelButton = ultrahand.Cancel.WasPressedThisFrame();
+            var moveVertically = ultrahand.MoveVertically.ReadValue<float>();
             var resetRotationButton = ultrahand.ResetRotation.WasPressedThisFrame();
 
             if (cancelButton) UltrahandSettings.CancelInteraction();
             else if (resetRotationButton) UltrahandSettings.ResetRotation();
 
             UltrahandSettings.EnableRotation(isHoldingRotateButton);
+            UltrahandSettings.MoveVertically(moveVertically);
 
             if (isHoldingRotateButton)
             {
-                var rotation = ultrahand.RotateAxis.ReadValue<Vector2>();
-                UltrahandSettings.Rotate(rotation);
+                if (ultrahand.RotateAxis.WasPerformedThisFrame())
+                {
+                    var rotation = ultrahand.RotateAxis.ReadValue<Vector2>();
+                    UltrahandSettings.Rotate(rotation);
+                }
             }
             else
             {
                 var moveDistally = ultrahand.MoveDistally.ReadValue<float>();
-                var moveVertically = ultrahand.MoveVertically.ReadValue<float>();
-
                 UltrahandSettings.MoveDistally(moveDistally);
-                UltrahandSettings.MoveVertically(moveVertically);
             }
         }
 

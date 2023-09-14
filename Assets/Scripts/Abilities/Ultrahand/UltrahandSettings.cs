@@ -9,7 +9,7 @@ namespace TheLegend.Abilities
     {
         [SerializeField, Min(0f)] private float distalSpeed = 6F;
         [SerializeField, Min(0f)] private float verticalSpeed = 4F;
-        [SerializeField, Min(0f)] private float rotateTime = 0.5f;
+        [SerializeField, Min(0f)] private float rotateTime = 0.2f;
         [SerializeField, Min(0f)] private float rotateAngle = 45f;
         [SerializeField, Min(0f)] private float minDistalDistance = 2f;
         [SerializeField, Min(0f)] private float maxDistalDistance = 10f;
@@ -86,28 +86,24 @@ namespace TheLegend.Abilities
             Player.Ultrahand.Holder.position = nextPosition;
         }
 
-        public void EnableRotation(bool enabled)
-        {
+        public void EnableRotation(bool enabled) =>
             Player.Ultrahand.EnableDirectionalIndicator(enabled);
-        }
 
         public void Rotate(Vector2 input)
         {
             var hasInput = Mathf.Abs(input.sqrMagnitude) > 0F;
             if (!hasInput) return;
 
-            var axis = new Vector2(input.y, -input.x);
-            var angle = axis * rotateAngle;
-            //var cameraRightDir = Player.Motor.GetCameraRightDirection();
-            //var angle = axis * cameraRightDir;
-
-            CurrentUltrahandable.Rotate(angle, rotateTime);
+            Player.Ultrahand.Rotate(
+                input,
+                CurrentUltrahandable.transform,
+                rotateAngle,
+                rotateTime
+            );
         }
 
-        public void ResetRotation()
-        {
-            CurrentUltrahandable.transform.localRotation = Quaternion.identity;
-        }
+        public void ResetRotation() =>
+            Player.Ultrahand.ResetRotation(CurrentUltrahandable.transform, rotateTime);
 
         internal override void Toggle(bool enabled)
         {
