@@ -15,6 +15,7 @@ namespace TheLegend.Abilities
         [SerializeField, Min(0f)] private float maxDistalDistance = 10f;
         [SerializeField, Min(0f)] private float maxVerticalDistance = 3f;
 
+        public event Action OnUltrahandableRotated;
         public event Action<bool> OnSelectionChanged;
         public event Action<IUltrahandable> OnInteractionStarted;
         public event Action<IUltrahandable> OnInteractionCanceled;
@@ -100,6 +101,7 @@ namespace TheLegend.Abilities
                 rotateAngle,
                 rotateTime
             );
+            OnUltrahandableRotated?.Invoke();
         }
 
         public void ResetRotation() =>
