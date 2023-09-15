@@ -99,7 +99,7 @@ namespace TheLegend.Players
 
             if (isHoldingRotateButton)
             {
-                if (ultrahand.RotateAxis.WasPerformedThisFrame())
+                if (ultrahand.RotateAxis.WasPressedThisFrame())
                 {
                     var rotation = ultrahand.RotateAxis.ReadValue<Vector2>();
                     UltrahandSettings.Rotate(rotation);
