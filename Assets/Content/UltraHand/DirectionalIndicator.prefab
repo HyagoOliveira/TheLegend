@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8357756814423389233}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: DirectionalIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 5859508494500371846}
   - component: {fileID: 5221132161823887302}
   - component: {fileID: 6690652202930111182}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: DirectionArrow_Horizontal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 7837014364760551758}
   - component: {fileID: 2740102743212529145}
   - component: {fileID: 989717056131303433}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: DirectionArrow_Vertical
   m_TagString: Untagged
   m_Icon: {fileID: 0}
