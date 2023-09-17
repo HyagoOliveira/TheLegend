@@ -33,14 +33,8 @@ namespace TheLegend.Abilities
 
             var hasUltrahandable = PlayerSettings.AbilityCaster.
                 TryGetHittingComponent(out IUltrahandable ultrahandable);
-            if (!hasUltrahandable) return;
 
-            CurrentUltrahandable = ultrahandable;
-
-            Player.Ultrahand.AttachHolder(CurrentUltrahandable.transform);
-
-            CurrentUltrahandable.Interact();
-            OnInteractionStarted?.Invoke(CurrentUltrahandable);
+            if (hasUltrahandable) StartInteraction(ultrahandable);
         }
 
         public void CancelInteraction()
@@ -120,6 +114,22 @@ namespace TheLegend.Abilities
                 hit.transform.TryGetComponent(out IUltrahandable ultrahandable);
 
             OnSelectionChanged?.Invoke(hasUltrahandable);
+        }
+
+        private void StartInteraction(IUltrahandable ultrahandable)
+        {
+            CurrentUltrahandable = ultrahandable;
+
+            Player.Ultrahand.AttachHolder(CurrentUltrahandable.transform);
+
+            Player.Ultrahand.RotateNextToAngle(
+               CurrentUltrahandable.transform,
+               rotateAngle,
+               rotateTime
+           );
+
+            CurrentUltrahandable.Interact();
+            OnInteractionStarted?.Invoke(CurrentUltrahandable);
         }
 
         private float GetDistalDistanceFromPlayer(Vector3 position)

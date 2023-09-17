@@ -47,6 +47,14 @@ namespace TheLegend.Abilities
             );
         }
 
+        public void RotateNextToAngle(Transform transform, float angle, float time)
+        {
+            var worldRotation = RemoveModule(transform.localEulerAngles, angle);
+            var localRotation = Quaternion.Euler(worldRotation);
+
+            rotateCoroutine = StartCoroutine(RotateRoutine(transform, localRotation, time));
+        }
+
         public void Rotate(Vector2 input, Transform transform, float angle, float time)
         {
             CheckLastRotation(transform);
@@ -54,7 +62,8 @@ namespace TheLegend.Abilities
             var verticalRotation = Vector3.down * input.x;
             var horizontalRotation = Vector3.right * input.y;
             var worldAxis = verticalRotation + horizontalRotation;
-            var worldRotation = RemoveModule(worldAxis * angle, angle);
+            var worldAngle = worldAxis * angle;
+            var worldRotation = RemoveModule(worldAngle, angle);
             var localRotation = Quaternion.Euler(worldRotation) * transform.localRotation;
 
             rotateCoroutine = StartCoroutine(RotateRoutine(transform, localRotation, time));
