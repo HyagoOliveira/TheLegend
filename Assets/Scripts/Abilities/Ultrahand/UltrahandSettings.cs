@@ -40,6 +40,7 @@ namespace TheLegend.Abilities
         public void CancelInteraction()
         {
             Disable();
+            EnableRotation(false);
 
             if (!IsHolding()) return;
 
@@ -99,7 +100,7 @@ namespace TheLegend.Abilities
         }
 
         public void ResetRotation() =>
-            Player.Ultrahand.ResetRotation(CurrentUltrahandable.transform, rotateTime);
+            Player.Ultrahand.ResetRotation(CurrentUltrahandable.transform, rotateTime * 2F);
 
         internal override void Toggle(bool enabled)
         {

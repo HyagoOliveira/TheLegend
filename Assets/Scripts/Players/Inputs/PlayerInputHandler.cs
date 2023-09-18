@@ -86,6 +86,8 @@ namespace TheLegend.Players
 
         private void UpdateUltrahandActions()
         {
+            if (!player.Ultrahand.IsEnabled) return;
+
             var isHoldingRotateButton = ultrahand.Rotate.IsPressed();
             var cancelButton = ultrahand.Cancel.WasPressedThisFrame();
             var moveVertically = ultrahand.MoveVertically.ReadValue<float>();
