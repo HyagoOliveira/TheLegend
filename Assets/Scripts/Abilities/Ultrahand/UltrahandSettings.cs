@@ -82,15 +82,14 @@ namespace TheLegend.Abilities
             Player.Ultrahand.Holder.position = nextPosition;
         }
 
-        public void EnableRotation(bool enabled) =>
-            Player.Ultrahand.EnableDirectionalIndicator(enabled);
+        public void EnableRotation(bool enabled) => Player.Ultrahand.EnableDirectionalIndicator(enabled);
 
         public void Rotate(Vector2 input)
         {
             var hasInput = Mathf.Abs(input.sqrMagnitude) > 0F;
             if (!hasInput) return;
 
-            Player.Ultrahand.Rotate(
+            UltrahandRotator.Rotate(
                 input,
                 CurrentUltrahandable.transform,
                 rotateAngle,
@@ -100,7 +99,10 @@ namespace TheLegend.Abilities
         }
 
         public void ResetRotation() =>
-            Player.Ultrahand.ResetRotation(CurrentUltrahandable.transform, rotateTime * 2F);
+            UltrahandRotator.Reset(
+                CurrentUltrahandable.transform,
+                rotateTime
+            );
 
         internal override void Toggle(bool enabled)
         {
@@ -123,11 +125,11 @@ namespace TheLegend.Abilities
 
             Player.Ultrahand.AttachHolder(CurrentUltrahandable.transform);
 
-            Player.Ultrahand.RotateNextToAngle(
+            UltrahandRotator.Rotate(
                CurrentUltrahandable.transform,
                rotateAngle,
                rotateTime
-           );
+            );
 
             CurrentUltrahandable.Interact();
             OnInteractionStarted?.Invoke(CurrentUltrahandable);
