@@ -286,7 +286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisions:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 65
   distance: 15
   camera: {fileID: 5080255261826527853}
 --- !u!114 &7597130513459658799
