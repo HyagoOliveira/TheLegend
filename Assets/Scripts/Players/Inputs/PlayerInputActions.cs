@@ -487,10 +487,10 @@ namespace TheLegend.Players
                 {
                     ""name"": """",
                     ""id"": ""8067ac73-db97-4889-a834-2ed73f34d413"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""path"": ""<Keyboard>/u"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad"",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Cancel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
