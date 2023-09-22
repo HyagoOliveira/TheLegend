@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "com.actioncode.audio": "3.0.1",
+    "com.actioncode.awaitable-coroutines": "1.0.0",
     "com.actioncode.input-system": "1.0.0-preview.6",
     "com.actioncode.physics": "0.2.1",
     "com.actioncode.visual-effects": "1.0.0",
