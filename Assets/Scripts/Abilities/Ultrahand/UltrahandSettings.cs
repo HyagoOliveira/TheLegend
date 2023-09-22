@@ -56,9 +56,15 @@ namespace TheLegend.Abilities
         {
             if (!HasInput(input)) return;
 
-            var speed = input * distalSpeed * Time.deltaTime;
+            var speed = distalSpeed * Time.deltaTime;
+            var direction = input * Player.transform.forward;
+            var isInvalidMovement = !CurrentUltrahandable.CanMove(direction, speed);
+
+            if (isInvalidMovement) return;
+
+            var velocity = speed * direction;
             var position = Player.Ultrahand.Holder.position;
-            var nextPosition = position + Player.transform.forward * speed;
+            var nextPosition = position + velocity;
             var distance = GetDistalDistanceFromPlayer(nextPosition);
             var hasMaxDistance = distance > maxDistalDistance;
             var hasMinDistance = distance < minDistalDistance;
@@ -73,9 +79,15 @@ namespace TheLegend.Abilities
         {
             if (!HasInput(input)) return;
 
-            var speed = input * verticalSpeed * Time.deltaTime;
+            var direction = input * Vector3.up;
+            var speed = verticalSpeed * Time.deltaTime;
+            var isInvalidMovement = !CurrentUltrahandable.CanMove(direction, speed);
+
+            if (isInvalidMovement) return;
+
+            var velocity = speed * direction;
             var position = Player.Ultrahand.Holder.position;
-            var nextPosition = position + Vector3.up * speed;
+            var nextPosition = position + velocity;
             var distance = GetVerticalDistanceFromPlayer(nextPosition);
             var hasMaxDistance = distance > maxVerticalDistance;
             var isBellowPlayer = nextPosition.y < Player.transform.position.y;
