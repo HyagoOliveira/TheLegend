@@ -60,15 +60,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Strafe",
-                    "type": "Button",
-                    "id": "aa16acd0-93fa-4df8-8a28-0936f1b97af5",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Ultrahand",
                     "type": "Button",
                     "id": "e9ae187a-cb52-4f00-83ca-527e136e216b",
@@ -307,28 +298,6 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Attack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e1fda53c-9a78-4dce-8565-8c3b686981e6",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Strafe",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "65152cde-352f-40bd-9e05-8e84b3982106",
-                    "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Strafe",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

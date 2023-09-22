@@ -84,15 +84,6 @@ namespace TheLegend.Players
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Strafe"",
-                    ""type"": ""Button"",
-                    ""id"": ""aa16acd0-93fa-4df8-8a28-0936f1b97af5"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Ultrahand"",
                     ""type"": ""Button"",
                     ""id"": ""e9ae187a-cb52-4f00-83ca-527e136e216b"",
@@ -331,28 +322,6 @@ namespace TheLegend.Players
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Attack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e1fda53c-9a78-4dce-8565-8c3b686981e6"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Strafe"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""65152cde-352f-40bd-9e05-8e84b3982106"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Strafe"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1259,7 +1228,6 @@ namespace TheLegend.Players
             m_Navigation_Jump = m_Navigation.FindAction("Jump", throwIfNotFound: true);
             m_Navigation_Attack = m_Navigation.FindAction("Attack", throwIfNotFound: true);
             m_Navigation_Sprint = m_Navigation.FindAction("Sprint", throwIfNotFound: true);
-            m_Navigation_Strafe = m_Navigation.FindAction("Strafe", throwIfNotFound: true);
             m_Navigation_Ultrahand = m_Navigation.FindAction("Ultrahand", throwIfNotFound: true);
             // Ultrahand
             m_Ultrahand = asset.FindActionMap("Ultrahand", throwIfNotFound: true);
@@ -1349,7 +1317,6 @@ namespace TheLegend.Players
         private readonly InputAction m_Navigation_Jump;
         private readonly InputAction m_Navigation_Attack;
         private readonly InputAction m_Navigation_Sprint;
-        private readonly InputAction m_Navigation_Strafe;
         private readonly InputAction m_Navigation_Ultrahand;
         public struct NavigationActions
         {
@@ -1361,7 +1328,6 @@ namespace TheLegend.Players
             public InputAction @Jump => m_Wrapper.m_Navigation_Jump;
             public InputAction @Attack => m_Wrapper.m_Navigation_Attack;
             public InputAction @Sprint => m_Wrapper.m_Navigation_Sprint;
-            public InputAction @Strafe => m_Wrapper.m_Navigation_Strafe;
             public InputAction @Ultrahand => m_Wrapper.m_Navigation_Ultrahand;
             public InputActionMap Get() { return m_Wrapper.m_Navigation; }
             public void Enable() { Get().Enable(); }
@@ -1390,9 +1356,6 @@ namespace TheLegend.Players
                 @Sprint.started += instance.OnSprint;
                 @Sprint.performed += instance.OnSprint;
                 @Sprint.canceled += instance.OnSprint;
-                @Strafe.started += instance.OnStrafe;
-                @Strafe.performed += instance.OnStrafe;
-                @Strafe.canceled += instance.OnStrafe;
                 @Ultrahand.started += instance.OnUltrahand;
                 @Ultrahand.performed += instance.OnUltrahand;
                 @Ultrahand.canceled += instance.OnUltrahand;
@@ -1418,9 +1381,6 @@ namespace TheLegend.Players
                 @Sprint.started -= instance.OnSprint;
                 @Sprint.performed -= instance.OnSprint;
                 @Sprint.canceled -= instance.OnSprint;
-                @Strafe.started -= instance.OnStrafe;
-                @Strafe.performed -= instance.OnStrafe;
-                @Strafe.canceled -= instance.OnStrafe;
                 @Ultrahand.started -= instance.OnUltrahand;
                 @Ultrahand.performed -= instance.OnUltrahand;
                 @Ultrahand.canceled -= instance.OnUltrahand;
@@ -1706,7 +1666,6 @@ namespace TheLegend.Players
             void OnJump(InputAction.CallbackContext context);
             void OnAttack(InputAction.CallbackContext context);
             void OnSprint(InputAction.CallbackContext context);
-            void OnStrafe(InputAction.CallbackContext context);
             void OnUltrahand(InputAction.CallbackContext context);
         }
         public interface IUltrahandActions

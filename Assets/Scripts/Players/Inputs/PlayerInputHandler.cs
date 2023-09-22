@@ -68,11 +68,6 @@ namespace TheLegend.Players
                 player.Motor.StartSprint,
                 player.Motor.CancelSprint
             );
-            UpdateButtonActions(
-                navigation.Strafe,
-                player.Motor.StartStrafeLocomotion,
-                player.Motor.StartFreeLocomotion
-            );
         }
 
         private void UpdateUltrahandSearchingActions()
