@@ -19,6 +19,7 @@ namespace TheLegend.Players
 
         [Header("Movement")]
         [SerializeField, Min(0f)] private float walkSpeed = 2f;
+        [SerializeField, Min(0f)] private float strafeSpeed = 3f;
         [SerializeField, Min(0f)] private float runSpeed = 6f;
         [SerializeField, Min(0f)] private float sprintSpeed = 8f;
         [SerializeField, Min(0f)] private float moveAcceleration = 12f;
@@ -145,12 +146,22 @@ namespace TheLegend.Players
                 return;
             }
 
-            var targetSpeed = IsSprinting ? sprintSpeed : GetNormalSpeed();
+            var targetSpeed = GetTagetSpeed();
             var moveSpeed = moveAcceleration * Time.deltaTime;
 
             Speed = Mathf.MoveTowards(Speed, targetSpeed, moveSpeed);
             Speed = RoundIntoThreeDecimalPlaces(Speed);
         }
+
+        private float GetTagetSpeed() => Locomotion switch
+        {
+            LocomotionType.Free => GetSprintSpeed(),
+            LocomotionType.Stand => GetSprintSpeed(),
+            LocomotionType.Strafe => strafeSpeed,
+            _ => 0f
+        };
+
+        private float GetSprintSpeed() => IsSprinting ? sprintSpeed : GetNormalSpeed();
 
         private void UpdateMoveDirection()
         {
