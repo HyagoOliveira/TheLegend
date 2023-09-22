@@ -54,6 +54,8 @@ namespace TheLegend.Abilities
 
         public void MoveDistally(float input)
         {
+            if (!HasInput(input)) return;
+
             var speed = input * distalSpeed * Time.deltaTime;
             var position = Player.Ultrahand.Holder.position;
             var nextPosition = position + Player.transform.forward * speed;
@@ -69,6 +71,8 @@ namespace TheLegend.Abilities
 
         public void MoveVertically(float input)
         {
+            if (!HasInput(input)) return;
+
             var speed = input * verticalSpeed * Time.deltaTime;
             var position = Player.Ultrahand.Holder.position;
             var nextPosition = position + Vector3.up * speed;
@@ -150,5 +154,7 @@ namespace TheLegend.Abilities
             var verticalDelta = position.y - Player.transform.position.y;
             return Mathf.Abs(verticalDelta);
         }
+
+        private static bool HasInput(float input) => Mathf.Abs(input) > 0F;
     }
 }
