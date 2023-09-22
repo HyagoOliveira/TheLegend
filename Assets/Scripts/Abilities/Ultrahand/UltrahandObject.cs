@@ -9,7 +9,8 @@ namespace TheLegend.Abilities
         [SerializeField] private Rigidbody body;
         //private FixedJoint joint;
 
-        private bool lockRotation;
+        private const float skin = 0.08f;
+        private const float halfSkin = skin * 0.5f;
 
         public bool IsInteracting
         {
@@ -22,16 +23,19 @@ namespace TheLegend.Abilities
         public void Interact() => IsInteracting = true;
         public void CancelInteraction() => IsInteracting = false;
 
-        /*public void Move(Transform holder)
+        public bool CanMove(Vector3 direction, float speed)
         {
-            if (!IsInteracting) return;
+            var position = transform.position;
 
-            var direction = (holder.position - body.position).normalized;
-            var hasHit = body.SweepTest(direction, out RaycastHit hit, maxDistance: 0.1F);
+            body.position = position - direction * halfSkin;
+
+            var distance = speed + skin;
+            var hasHit = body.SweepTest(direction, out RaycastHit hit, distance);
             var hasStaticCollision = hasHit && hit.transform.gameObject.isStatic;
-            var position = hasStaticCollision ? hit.point : holder.position;
 
-            body.Move(position, holder.rotation);
-        }*/
+            body.position = position;
+
+            return !hasStaticCollision;
+        }
     }
 }

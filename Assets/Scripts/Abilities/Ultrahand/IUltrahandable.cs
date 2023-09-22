@@ -8,5 +8,7 @@ namespace TheLegend.Abilities
     public interface IUltrahandable : IInteractable
     {
         Transform transform { get; }
+
+        bool CanMove(Vector3 direction, float speed);
     }
 }
