@@ -4,6 +4,7 @@
     "com.actioncode.awaitable-coroutines": "1.0.0",
     "com.actioncode.input-system": "file:D:/UnityProjects/_Packages/ActionCode/InputSystem",
     "com.actioncode.physics": "0.2.1",
+    "com.actioncode.ui": "4.2.0",
     "com.actioncode.visual-effects": "1.0.0",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.cinemachine": "2.9.7",
