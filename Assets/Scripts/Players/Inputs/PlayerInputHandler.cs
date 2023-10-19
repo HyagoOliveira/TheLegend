@@ -72,10 +72,10 @@ namespace TheLegend.Players
 
         private void UpdateUltrahandSearchingActions()
         {
-            var interactButton = ultrahand.Interact.WasPressedThisFrame();
+            var grabButton = ultrahand.Grab.WasPressedThisFrame();
             var cancelButton = ultrahand.Cancel.WasPressedThisFrame();
 
-            if (interactButton) UltrahandSettings.TryStartInteraction();
+            if (grabButton) UltrahandSettings.TryStartInteraction();
             else if (cancelButton) UltrahandSettings.CancelInteraction();
         }
 

@@ -372,7 +372,7 @@ namespace TheLegend.Players
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Interact"",
+                    ""name"": ""Grab"",
                     ""type"": ""Button"",
                     ""id"": ""bdccc5f8-22df-41fc-974a-96862cff0769"",
                     ""expectedControlType"": ""Button"",
@@ -469,7 +469,7 @@ namespace TheLegend.Players
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Interact"",
+                    ""action"": ""Grab"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -480,7 +480,7 @@ namespace TheLegend.Players
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Interact"",
+                    ""action"": ""Grab"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1233,7 +1233,7 @@ namespace TheLegend.Players
             m_Ultrahand = asset.FindActionMap("Ultrahand", throwIfNotFound: true);
             m_Ultrahand_MoveDistally = m_Ultrahand.FindAction("MoveDistally", throwIfNotFound: true);
             m_Ultrahand_MoveVertically = m_Ultrahand.FindAction("MoveVertically", throwIfNotFound: true);
-            m_Ultrahand_Interact = m_Ultrahand.FindAction("Interact", throwIfNotFound: true);
+            m_Ultrahand_Grab = m_Ultrahand.FindAction("Grab", throwIfNotFound: true);
             m_Ultrahand_Cancel = m_Ultrahand.FindAction("Cancel", throwIfNotFound: true);
             m_Ultrahand_Rotate = m_Ultrahand.FindAction("Rotate", throwIfNotFound: true);
             m_Ultrahand_RotateAxis = m_Ultrahand.FindAction("RotateAxis", throwIfNotFound: true);
@@ -1407,7 +1407,7 @@ namespace TheLegend.Players
         private List<IUltrahandActions> m_UltrahandActionsCallbackInterfaces = new List<IUltrahandActions>();
         private readonly InputAction m_Ultrahand_MoveDistally;
         private readonly InputAction m_Ultrahand_MoveVertically;
-        private readonly InputAction m_Ultrahand_Interact;
+        private readonly InputAction m_Ultrahand_Grab;
         private readonly InputAction m_Ultrahand_Cancel;
         private readonly InputAction m_Ultrahand_Rotate;
         private readonly InputAction m_Ultrahand_RotateAxis;
@@ -1418,7 +1418,7 @@ namespace TheLegend.Players
             public UltrahandActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
             public InputAction @MoveDistally => m_Wrapper.m_Ultrahand_MoveDistally;
             public InputAction @MoveVertically => m_Wrapper.m_Ultrahand_MoveVertically;
-            public InputAction @Interact => m_Wrapper.m_Ultrahand_Interact;
+            public InputAction @Grab => m_Wrapper.m_Ultrahand_Grab;
             public InputAction @Cancel => m_Wrapper.m_Ultrahand_Cancel;
             public InputAction @Rotate => m_Wrapper.m_Ultrahand_Rotate;
             public InputAction @RotateAxis => m_Wrapper.m_Ultrahand_RotateAxis;
@@ -1438,9 +1438,9 @@ namespace TheLegend.Players
                 @MoveVertically.started += instance.OnMoveVertically;
                 @MoveVertically.performed += instance.OnMoveVertically;
                 @MoveVertically.canceled += instance.OnMoveVertically;
-                @Interact.started += instance.OnInteract;
-                @Interact.performed += instance.OnInteract;
-                @Interact.canceled += instance.OnInteract;
+                @Grab.started += instance.OnGrab;
+                @Grab.performed += instance.OnGrab;
+                @Grab.canceled += instance.OnGrab;
                 @Cancel.started += instance.OnCancel;
                 @Cancel.performed += instance.OnCancel;
                 @Cancel.canceled += instance.OnCancel;
@@ -1463,9 +1463,9 @@ namespace TheLegend.Players
                 @MoveVertically.started -= instance.OnMoveVertically;
                 @MoveVertically.performed -= instance.OnMoveVertically;
                 @MoveVertically.canceled -= instance.OnMoveVertically;
-                @Interact.started -= instance.OnInteract;
-                @Interact.performed -= instance.OnInteract;
-                @Interact.canceled -= instance.OnInteract;
+                @Grab.started -= instance.OnGrab;
+                @Grab.performed -= instance.OnGrab;
+                @Grab.canceled -= instance.OnGrab;
                 @Cancel.started -= instance.OnCancel;
                 @Cancel.performed -= instance.OnCancel;
                 @Cancel.canceled -= instance.OnCancel;
@@ -1672,7 +1672,7 @@ namespace TheLegend.Players
         {
             void OnMoveDistally(InputAction.CallbackContext context);
             void OnMoveVertically(InputAction.CallbackContext context);
-            void OnInteract(InputAction.CallbackContext context);
+            void OnGrab(InputAction.CallbackContext context);
             void OnCancel(InputAction.CallbackContext context);
             void OnRotate(InputAction.CallbackContext context);
             void OnRotateAxis(InputAction.CallbackContext context);
