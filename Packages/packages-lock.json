@@ -26,13 +26,14 @@
       "url": "http://34.125.146.81:4873"
     },
     "com.actioncode.input-system": {
-      "version": "1.0.0-preview.6",
+      "version": "file:D:/UnityProjects/_Packages/ActionCode/InputSystem",
       "depth": 0,
-      "source": "registry",
+      "source": "local",
       "dependencies": {
-        "com.unity.inputsystem": "1.0.1"
-      },
-      "url": "http://34.125.146.81:4873"
+        "com.unity.inputsystem": "1.2.0",
+        "com.unity.textmeshpro": "1.0.0",
+        "com.actioncode.serialized-dictionary": "1.1.0"
+      }
     },
     "com.actioncode.physics": {
       "version": "0.2.1",
@@ -42,6 +43,13 @@
         "com.actioncode.collider-adapter": "3.1.0",
         "com.actioncode.shapes": "1.2.0"
       },
+      "url": "http://34.125.146.81:4873"
+    },
+    "com.actioncode.serialized-dictionary": {
+      "version": "1.1.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
       "url": "http://34.125.146.81:4873"
     },
     "com.actioncode.shapes": {
