@@ -430,37 +430,15 @@ namespace TheLegend.Players
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""Numpad"",
-                    ""id"": ""bc87f4a6-4931-41ff-b7b8-12631dd60834"",
-                    ""path"": ""1DAxis"",
+                    ""name"": """",
+                    ""id"": ""d75470b5-a96a-4ac4-b8bd-e89e7f5f436d"",
+                    ""path"": ""<Mouse>/scroll/y"",
                     ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
+                    ""processors"": ""Scale(factor=0.1)"",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""MoveDistally"",
-                    ""isComposite"": true,
+                    ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""Negative"",
-                    ""id"": ""2b702be4-0f43-4b6e-bc47-1832f9ad1a4c"",
-                    ""path"": ""<Keyboard>/numpad2"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""MoveDistally"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Positive"",
-                    ""id"": ""2b39f8c4-4496-49aa-8f47-c44e9306cc79"",
-                    ""path"": ""<Keyboard>/numpad8"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""MoveDistally"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": """",
@@ -486,8 +464,8 @@ namespace TheLegend.Players
                 },
                 {
                     ""name"": """",
-                    ""id"": ""8067ac73-db97-4889-a834-2ed73f34d413"",
-                    ""path"": ""<Keyboard>/u"",
+                    ""id"": ""9f48fb33-f943-4dd4-bb61-00dc5000ac03"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
@@ -497,11 +475,11 @@ namespace TheLegend.Players
                 },
                 {
                     ""name"": """",
-                    ""id"": ""9f48fb33-f943-4dd4-bb61-00dc5000ac03"",
-                    ""path"": ""<Mouse>/rightButton"",
+                    ""id"": ""9c3e83a3-8ac0-46b8-9b7a-d1cf75815534"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Cancel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
