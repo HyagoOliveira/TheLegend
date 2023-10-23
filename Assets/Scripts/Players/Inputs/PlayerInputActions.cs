@@ -48,33 +48,6 @@ namespace TheLegend.Players
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Interact"",
-                    ""type"": ""Button"",
-                    ""id"": ""d32e773f-e405-454c-bb97-c50593178a94"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Jump"",
-                    ""type"": ""Button"",
-                    ""id"": ""57341d2f-2117-4ebe-97ae-bc5f8e353301"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Attack"",
-                    ""type"": ""Button"",
-                    ""id"": ""c096f30d-4fff-4813-bb0d-2adf2ae03047"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Sprint"",
                     ""type"": ""Button"",
                     ""id"": ""dd3af782-09ae-4f7c-8059-ae0d2fa4cbf0"",
@@ -209,7 +182,7 @@ namespace TheLegend.Players
                     ""id"": ""c1f7a91b-d0fd-4a62-997e-7fb9b69bf235"",
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
-                    ""processors"": ""StickDeadzoneClamped"",
+                    ""processors"": """",
                     ""groups"": "";Gamepad"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
@@ -239,50 +212,6 @@ namespace TheLegend.Players
                 },
                 {
                     ""name"": """",
-                    ""id"": ""143bb1cd-cc10-4eca-a2f0-a3664166fe91"",
-                    ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Gamepad"",
-                    ""action"": ""Interact"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""05f6913d-c316-48b2-a6bb-e225f14c7960"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Interact"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5d6e2ff8-5ca5-436f-8772-004feb3a4f87"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e92c7ef8-153d-41e4-ba64-77654ebaae14"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""80b3c179-8432-4c15-8118-fbc3065470ae"",
                     ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
@@ -300,28 +229,6 @@ namespace TheLegend.Players
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Sprint"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""10da1611-e6f7-470c-b8d4-7177185fc7c7"",
-                    ""path"": ""<Gamepad>/buttonWest"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Attack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""7c711094-7fc3-4252-922c-f4dd6e0edb38"",
-                    ""path"": ""<Keyboard>/ctrl"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1202,9 +1109,6 @@ namespace TheLegend.Players
             m_Navigation = asset.FindActionMap("Navigation", throwIfNotFound: true);
             m_Navigation_Move = m_Navigation.FindAction("Move", throwIfNotFound: true);
             m_Navigation_Look = m_Navigation.FindAction("Look", throwIfNotFound: true);
-            m_Navigation_Interact = m_Navigation.FindAction("Interact", throwIfNotFound: true);
-            m_Navigation_Jump = m_Navigation.FindAction("Jump", throwIfNotFound: true);
-            m_Navigation_Attack = m_Navigation.FindAction("Attack", throwIfNotFound: true);
             m_Navigation_Sprint = m_Navigation.FindAction("Sprint", throwIfNotFound: true);
             m_Navigation_Ultrahand = m_Navigation.FindAction("Ultrahand", throwIfNotFound: true);
             // Ultrahand
@@ -1291,9 +1195,6 @@ namespace TheLegend.Players
         private List<INavigationActions> m_NavigationActionsCallbackInterfaces = new List<INavigationActions>();
         private readonly InputAction m_Navigation_Move;
         private readonly InputAction m_Navigation_Look;
-        private readonly InputAction m_Navigation_Interact;
-        private readonly InputAction m_Navigation_Jump;
-        private readonly InputAction m_Navigation_Attack;
         private readonly InputAction m_Navigation_Sprint;
         private readonly InputAction m_Navigation_Ultrahand;
         public struct NavigationActions
@@ -1302,9 +1203,6 @@ namespace TheLegend.Players
             public NavigationActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_Navigation_Move;
             public InputAction @Look => m_Wrapper.m_Navigation_Look;
-            public InputAction @Interact => m_Wrapper.m_Navigation_Interact;
-            public InputAction @Jump => m_Wrapper.m_Navigation_Jump;
-            public InputAction @Attack => m_Wrapper.m_Navigation_Attack;
             public InputAction @Sprint => m_Wrapper.m_Navigation_Sprint;
             public InputAction @Ultrahand => m_Wrapper.m_Navigation_Ultrahand;
             public InputActionMap Get() { return m_Wrapper.m_Navigation; }
@@ -1322,15 +1220,6 @@ namespace TheLegend.Players
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
-                @Interact.started += instance.OnInteract;
-                @Interact.performed += instance.OnInteract;
-                @Interact.canceled += instance.OnInteract;
-                @Jump.started += instance.OnJump;
-                @Jump.performed += instance.OnJump;
-                @Jump.canceled += instance.OnJump;
-                @Attack.started += instance.OnAttack;
-                @Attack.performed += instance.OnAttack;
-                @Attack.canceled += instance.OnAttack;
                 @Sprint.started += instance.OnSprint;
                 @Sprint.performed += instance.OnSprint;
                 @Sprint.canceled += instance.OnSprint;
@@ -1347,15 +1236,6 @@ namespace TheLegend.Players
                 @Look.started -= instance.OnLook;
                 @Look.performed -= instance.OnLook;
                 @Look.canceled -= instance.OnLook;
-                @Interact.started -= instance.OnInteract;
-                @Interact.performed -= instance.OnInteract;
-                @Interact.canceled -= instance.OnInteract;
-                @Jump.started -= instance.OnJump;
-                @Jump.performed -= instance.OnJump;
-                @Jump.canceled -= instance.OnJump;
-                @Attack.started -= instance.OnAttack;
-                @Attack.performed -= instance.OnAttack;
-                @Attack.canceled -= instance.OnAttack;
                 @Sprint.started -= instance.OnSprint;
                 @Sprint.performed -= instance.OnSprint;
                 @Sprint.canceled -= instance.OnSprint;
@@ -1640,9 +1520,6 @@ namespace TheLegend.Players
         {
             void OnMove(InputAction.CallbackContext context);
             void OnLook(InputAction.CallbackContext context);
-            void OnInteract(InputAction.CallbackContext context);
-            void OnJump(InputAction.CallbackContext context);
-            void OnAttack(InputAction.CallbackContext context);
             void OnSprint(InputAction.CallbackContext context);
             void OnUltrahand(InputAction.CallbackContext context);
         }
