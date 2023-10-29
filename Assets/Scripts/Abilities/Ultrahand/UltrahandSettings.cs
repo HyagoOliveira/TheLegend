@@ -15,8 +15,19 @@ namespace TheLegend.Abilities
         [SerializeField, Min(0f)] private float maxDistalDistance = 10f;
         [SerializeField, Min(0f)] private float maxVerticalDistance = 3f;
 
+        public bool IsShowingDirectionalIndicator
+        {
+            get => Player.Ultrahand.IsShowingDirectionalIndicator;
+            private set
+            {
+                Player.Ultrahand.IsShowingDirectionalIndicator = value;
+                OnDirectionalIndicatorToggled?.Invoke(value);
+            }
+        }
+
         public event Action OnObjectRotated;
         public event Action<bool> OnSelectionChanged;
+        public event Action<bool> OnDirectionalIndicatorToggled;
         public event Action<IUltrahandable> OnInteractionStarted;
         public event Action<IUltrahandable> OnInteractionCanceled;
 
@@ -39,8 +50,7 @@ namespace TheLegend.Abilities
 
         public void CancelInteraction()
         {
-            Disable();
-            EnableRotation(false);
+            IsShowingDirectionalIndicator = false;
 
             if (!IsHolding()) return;
 
@@ -98,8 +108,6 @@ namespace TheLegend.Abilities
             Player.Ultrahand.Holder.position = nextPosition;
         }
 
-        public void EnableRotation(bool enabled) => Player.Ultrahand.EnableDirectionalIndicator(enabled);
-
         public void Rotate(Vector2 input)
         {
             var hasInput = Mathf.Abs(input.sqrMagnitude) > 0F;
@@ -119,6 +127,9 @@ namespace TheLegend.Abilities
                 CurrentUltrahandable.transform,
                 rotateTime
             );
+
+        public void ShowDirectionalIndicator() => IsShowingDirectionalIndicator = true;
+        public void HideDirectionalIndicator() => IsShowingDirectionalIndicator = false;
 
         internal override void Toggle(bool enabled)
         {

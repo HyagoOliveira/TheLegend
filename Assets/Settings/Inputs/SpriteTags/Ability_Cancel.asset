@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fab4201b3ca23e43a10f7ba661054e7, type: 3}
-  m_Name: Grab
+  m_Name: Ability_Cancel
   m_EditorClassIdentifier: 
   inputAsset: {fileID: -944628639613478452, guid: 22a240e5bcf6cb34ca6d3a8dbc465163, type: 3}
   actionPopup:
     mapName: Ultrahand
     assetName: inputAsset
-    actionName: Grab
+    actionName: Cancel

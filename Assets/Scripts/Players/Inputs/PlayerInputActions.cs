@@ -257,6 +257,76 @@ namespace TheLegend.Players
             ]
         },
         {
+            ""name"": ""AbilitySearch"",
+            ""id"": ""61444266-12cd-457e-9070-ec52fa9fbff2"",
+            ""actions"": [
+                {
+                    ""name"": ""Perform"",
+                    ""type"": ""Button"",
+                    ""id"": ""8bbaee2e-4baa-4fdf-a629-0b0937d543fe"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Cancel"",
+                    ""type"": ""Button"",
+                    ""id"": ""f5bcb8a5-a15d-4413-b942-50dfffe80e00"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""14ddb0a7-0f28-4698-a3f2-b127b7b134b3"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Perform"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e4f21df2-efce-4011-a1a6-23f5591dd53d"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Perform"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7dc42a06-6e1f-41cb-acd4-443c8818cd2d"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bd4657bf-d55c-4e70-9644-fc2142f74090"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
             ""name"": ""Ultrahand"",
             ""id"": ""b1f8cea6-c56f-454d-bc5d-be7aad5b9030"",
             ""actions"": [
@@ -264,7 +334,7 @@ namespace TheLegend.Players
                     ""name"": ""MoveDistally"",
                     ""type"": ""Value"",
                     ""id"": ""b0d19030-a5e7-45eb-8895-a75f08743ae3"",
-                    ""expectedControlType"": ""Axis"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -277,15 +347,6 @@ namespace TheLegend.Players
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Grab"",
-                    ""type"": ""Button"",
-                    ""id"": ""bdccc5f8-22df-41fc-974a-96862cff0769"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 },
                 {
                     ""name"": ""Cancel"",
@@ -307,9 +368,9 @@ namespace TheLegend.Players
                 },
                 {
                     ""name"": ""RotateAxis"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""862d459e-4346-405b-b129-32bb5a1e07ab"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -322,50 +383,26 @@ namespace TheLegend.Players
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Unstick"",
+                    ""type"": ""Value"",
+                    ""id"": ""7de62be5-9aa6-4079-9bc8-f82c6dd83bd1"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": ""Vector2Wiggle"",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""f778904c-5931-4c7d-ad98-816d86e05173"",
-                    ""path"": ""<Gamepad>/dpad/y"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""MoveDistally"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d75470b5-a96a-4ac4-b8bd-e89e7f5f436d"",
-                    ""path"": ""<Mouse>/scroll/y"",
-                    ""interactions"": """",
-                    ""processors"": ""Scale(factor=0.1)"",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""MoveDistally"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""679a7d6d-e98a-416f-ad55-65a6a52aa33d"",
+                    ""id"": ""9c3e83a3-8ac0-46b8-9b7a-d1cf75815534"",
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Grab"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""01832952-b06a-4463-a0d9-723564694bbf"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Grab"",
+                    ""action"": ""Cancel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -376,17 +413,6 @@ namespace TheLegend.Players
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Cancel"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""9c3e83a3-8ac0-46b8-9b7a-d1cf75815534"",
-                    ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
                     ""action"": ""Cancel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -429,7 +455,7 @@ namespace TheLegend.Players
                     ""id"": ""54ec0de5-7c3b-4b70-bc9d-830a3b793624"",
                     ""path"": ""<Mouse>/delta/y"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""Scale(factor=0.2)"",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""MoveVertically"",
                     ""isComposite"": false,
@@ -520,6 +546,50 @@ namespace TheLegend.Players
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""ResetRotation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d2b260c6-01af-4d4d-9d17-8cd3c4b1dc21"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Unstick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b0589e27-02d2-4f5b-8a60-dad3dd53e99e"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Unstick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""419df6b4-ff54-4415-b58f-626c1fce0dad"",
+                    ""path"": ""<Gamepad>/dpad/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""MoveDistally"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""339a5c48-2eba-4c47-85cf-69c67893b2c4"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": ""Clamp(min=-10,max=10)"",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""MoveDistally"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1111,15 +1181,19 @@ namespace TheLegend.Players
             m_Navigation_Look = m_Navigation.FindAction("Look", throwIfNotFound: true);
             m_Navigation_Sprint = m_Navigation.FindAction("Sprint", throwIfNotFound: true);
             m_Navigation_Ultrahand = m_Navigation.FindAction("Ultrahand", throwIfNotFound: true);
+            // AbilitySearch
+            m_AbilitySearch = asset.FindActionMap("AbilitySearch", throwIfNotFound: true);
+            m_AbilitySearch_Perform = m_AbilitySearch.FindAction("Perform", throwIfNotFound: true);
+            m_AbilitySearch_Cancel = m_AbilitySearch.FindAction("Cancel", throwIfNotFound: true);
             // Ultrahand
             m_Ultrahand = asset.FindActionMap("Ultrahand", throwIfNotFound: true);
             m_Ultrahand_MoveDistally = m_Ultrahand.FindAction("MoveDistally", throwIfNotFound: true);
             m_Ultrahand_MoveVertically = m_Ultrahand.FindAction("MoveVertically", throwIfNotFound: true);
-            m_Ultrahand_Grab = m_Ultrahand.FindAction("Grab", throwIfNotFound: true);
             m_Ultrahand_Cancel = m_Ultrahand.FindAction("Cancel", throwIfNotFound: true);
             m_Ultrahand_Rotate = m_Ultrahand.FindAction("Rotate", throwIfNotFound: true);
             m_Ultrahand_RotateAxis = m_Ultrahand.FindAction("RotateAxis", throwIfNotFound: true);
             m_Ultrahand_ResetRotation = m_Ultrahand.FindAction("ResetRotation", throwIfNotFound: true);
+            m_Ultrahand_Unstick = m_Ultrahand.FindAction("Unstick", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1260,27 +1334,81 @@ namespace TheLegend.Players
         }
         public NavigationActions @Navigation => new NavigationActions(this);
 
+        // AbilitySearch
+        private readonly InputActionMap m_AbilitySearch;
+        private List<IAbilitySearchActions> m_AbilitySearchActionsCallbackInterfaces = new List<IAbilitySearchActions>();
+        private readonly InputAction m_AbilitySearch_Perform;
+        private readonly InputAction m_AbilitySearch_Cancel;
+        public struct AbilitySearchActions
+        {
+            private @PlayerInputActions m_Wrapper;
+            public AbilitySearchActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Perform => m_Wrapper.m_AbilitySearch_Perform;
+            public InputAction @Cancel => m_Wrapper.m_AbilitySearch_Cancel;
+            public InputActionMap Get() { return m_Wrapper.m_AbilitySearch; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(AbilitySearchActions set) { return set.Get(); }
+            public void AddCallbacks(IAbilitySearchActions instance)
+            {
+                if (instance == null || m_Wrapper.m_AbilitySearchActionsCallbackInterfaces.Contains(instance)) return;
+                m_Wrapper.m_AbilitySearchActionsCallbackInterfaces.Add(instance);
+                @Perform.started += instance.OnPerform;
+                @Perform.performed += instance.OnPerform;
+                @Perform.canceled += instance.OnPerform;
+                @Cancel.started += instance.OnCancel;
+                @Cancel.performed += instance.OnCancel;
+                @Cancel.canceled += instance.OnCancel;
+            }
+
+            private void UnregisterCallbacks(IAbilitySearchActions instance)
+            {
+                @Perform.started -= instance.OnPerform;
+                @Perform.performed -= instance.OnPerform;
+                @Perform.canceled -= instance.OnPerform;
+                @Cancel.started -= instance.OnCancel;
+                @Cancel.performed -= instance.OnCancel;
+                @Cancel.canceled -= instance.OnCancel;
+            }
+
+            public void RemoveCallbacks(IAbilitySearchActions instance)
+            {
+                if (m_Wrapper.m_AbilitySearchActionsCallbackInterfaces.Remove(instance))
+                    UnregisterCallbacks(instance);
+            }
+
+            public void SetCallbacks(IAbilitySearchActions instance)
+            {
+                foreach (var item in m_Wrapper.m_AbilitySearchActionsCallbackInterfaces)
+                    UnregisterCallbacks(item);
+                m_Wrapper.m_AbilitySearchActionsCallbackInterfaces.Clear();
+                AddCallbacks(instance);
+            }
+        }
+        public AbilitySearchActions @AbilitySearch => new AbilitySearchActions(this);
+
         // Ultrahand
         private readonly InputActionMap m_Ultrahand;
         private List<IUltrahandActions> m_UltrahandActionsCallbackInterfaces = new List<IUltrahandActions>();
         private readonly InputAction m_Ultrahand_MoveDistally;
         private readonly InputAction m_Ultrahand_MoveVertically;
-        private readonly InputAction m_Ultrahand_Grab;
         private readonly InputAction m_Ultrahand_Cancel;
         private readonly InputAction m_Ultrahand_Rotate;
         private readonly InputAction m_Ultrahand_RotateAxis;
         private readonly InputAction m_Ultrahand_ResetRotation;
+        private readonly InputAction m_Ultrahand_Unstick;
         public struct UltrahandActions
         {
             private @PlayerInputActions m_Wrapper;
             public UltrahandActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
             public InputAction @MoveDistally => m_Wrapper.m_Ultrahand_MoveDistally;
             public InputAction @MoveVertically => m_Wrapper.m_Ultrahand_MoveVertically;
-            public InputAction @Grab => m_Wrapper.m_Ultrahand_Grab;
             public InputAction @Cancel => m_Wrapper.m_Ultrahand_Cancel;
             public InputAction @Rotate => m_Wrapper.m_Ultrahand_Rotate;
             public InputAction @RotateAxis => m_Wrapper.m_Ultrahand_RotateAxis;
             public InputAction @ResetRotation => m_Wrapper.m_Ultrahand_ResetRotation;
+            public InputAction @Unstick => m_Wrapper.m_Ultrahand_Unstick;
             public InputActionMap Get() { return m_Wrapper.m_Ultrahand; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -1296,9 +1424,6 @@ namespace TheLegend.Players
                 @MoveVertically.started += instance.OnMoveVertically;
                 @MoveVertically.performed += instance.OnMoveVertically;
                 @MoveVertically.canceled += instance.OnMoveVertically;
-                @Grab.started += instance.OnGrab;
-                @Grab.performed += instance.OnGrab;
-                @Grab.canceled += instance.OnGrab;
                 @Cancel.started += instance.OnCancel;
                 @Cancel.performed += instance.OnCancel;
                 @Cancel.canceled += instance.OnCancel;
@@ -1311,6 +1436,9 @@ namespace TheLegend.Players
                 @ResetRotation.started += instance.OnResetRotation;
                 @ResetRotation.performed += instance.OnResetRotation;
                 @ResetRotation.canceled += instance.OnResetRotation;
+                @Unstick.started += instance.OnUnstick;
+                @Unstick.performed += instance.OnUnstick;
+                @Unstick.canceled += instance.OnUnstick;
             }
 
             private void UnregisterCallbacks(IUltrahandActions instance)
@@ -1321,9 +1449,6 @@ namespace TheLegend.Players
                 @MoveVertically.started -= instance.OnMoveVertically;
                 @MoveVertically.performed -= instance.OnMoveVertically;
                 @MoveVertically.canceled -= instance.OnMoveVertically;
-                @Grab.started -= instance.OnGrab;
-                @Grab.performed -= instance.OnGrab;
-                @Grab.canceled -= instance.OnGrab;
                 @Cancel.started -= instance.OnCancel;
                 @Cancel.performed -= instance.OnCancel;
                 @Cancel.canceled -= instance.OnCancel;
@@ -1336,6 +1461,9 @@ namespace TheLegend.Players
                 @ResetRotation.started -= instance.OnResetRotation;
                 @ResetRotation.performed -= instance.OnResetRotation;
                 @ResetRotation.canceled -= instance.OnResetRotation;
+                @Unstick.started -= instance.OnUnstick;
+                @Unstick.performed -= instance.OnUnstick;
+                @Unstick.canceled -= instance.OnUnstick;
             }
 
             public void RemoveCallbacks(IUltrahandActions instance)
@@ -1523,15 +1651,20 @@ namespace TheLegend.Players
             void OnSprint(InputAction.CallbackContext context);
             void OnUltrahand(InputAction.CallbackContext context);
         }
+        public interface IAbilitySearchActions
+        {
+            void OnPerform(InputAction.CallbackContext context);
+            void OnCancel(InputAction.CallbackContext context);
+        }
         public interface IUltrahandActions
         {
             void OnMoveDistally(InputAction.CallbackContext context);
             void OnMoveVertically(InputAction.CallbackContext context);
-            void OnGrab(InputAction.CallbackContext context);
             void OnCancel(InputAction.CallbackContext context);
             void OnRotate(InputAction.CallbackContext context);
             void OnRotateAxis(InputAction.CallbackContext context);
             void OnResetRotation(InputAction.CallbackContext context);
+            void OnUnstick(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {

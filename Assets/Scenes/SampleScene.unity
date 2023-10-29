@@ -1285,8 +1285,8 @@ GameObject:
   - component: {fileID: 1173883458}
   - component: {fileID: 1173883454}
   - component: {fileID: 1173883455}
-  - component: {fileID: 1173883456}
   - component: {fileID: 1173883459}
+  - component: {fileID: 1173883462}
   - component: {fileID: 1173883457}
   - component: {fileID: 1173883460}
   - component: {fileID: 1173883461}
@@ -1365,19 +1365,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &1173883456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1173883450}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9aab1f1d2b7a5c4b974a72c279d054d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1173883459}
 --- !u!114 &1173883457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1468,6 +1455,19 @@ MonoBehaviour:
   <Hand>k__BackingField: {fileID: 882180252}
   <Holder>k__BackingField: {fileID: 1285897048845357078}
   directionalIndicator: {fileID: 1650997661783809765}
+--- !u!114 &1173883462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173883450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7914639d96624aa4e8e89ba4917587cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1173883459}
 --- !u!1 &1309972183
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,6 +10,12 @@ namespace TheLegend.Abilities
 
         [SerializeField] private GameObject directionalIndicator;
 
+        public bool IsShowingDirectionalIndicator
+        {
+            get => directionalIndicator.activeInHierarchy;
+            set => directionalIndicator.SetActive(value);
+        }
+
         private void Update() => DrawLineBetweenHandAndObject();
 
         internal void AttachHolder(Transform ultrahandable)
@@ -27,8 +33,6 @@ namespace TheLegend.Abilities
         {
             ultrahandable.parent = null;
         }
-
-        internal void EnableDirectionalIndicator(bool enable) => directionalIndicator.SetActive(enable);
 
         private void DrawLineBetweenHandAndObject()
         {
