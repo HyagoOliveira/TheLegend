@@ -10,7 +10,7 @@ namespace TheLegend.UI
         [SerializeField] private Canvas canvas;
 
         [Space]
-        [SerializeField] private GameObject grab;
+        [SerializeField] private GameObject searching;
         [SerializeField] private GameObject interacting;
         [SerializeField] private GameObject unstick;
 
@@ -33,21 +33,21 @@ namespace TheLegend.UI
         protected override void HandleToggled(bool enabled)
         {
             canvas.enabled = enabled;
-            grab.SetActive(true);
+            searching.SetActive(true);
             unstick.SetActive(false);
             interacting.SetActive(false);
         }
 
         private void HandleInteractionStarted(IUltrahandable _)
         {
-            grab.SetActive(false);
+            searching.SetActive(false);
             unstick.SetActive(false);
             interacting.SetActive(true);
         }
 
         private void HandleInteractionCanceled(IUltrahandable _)
         {
-            grab.SetActive(false);
+            searching.SetActive(false);
             unstick.SetActive(false);
             interacting.SetActive(false);
         }
